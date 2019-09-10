@@ -1,0 +1,7 @@
+<svg viewBox="0 0 120 120" class="lh-gauge"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+>
+<circle class="lh-gauge-base" r="56" cx="60" cy="60"></circle>
+<circle class="lh-gauge-arc" transform="rotate(-90 60 60)" r="56" cx="60" cy="60" style="stroke-dasharray: 348.48, 352;"></circle>
+</svg>

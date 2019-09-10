@@ -1,0 +1,5 @@
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="56" fill="#ff4e42" stroke="#ff4e42" stroke-width="8" opacity=".1" />
+<circle cx="60" cy="60" r="56" fill="none" stroke-dasharray="91.52,352" stroke="#ff4e42" transform="rotate(-90 60 60)" stroke-width="8" stroke-linecap="round"/>
+<text y="74" x="35" style="font-size:39px;font-family:Lato" fill="#ff4e42">26</text>
+</svg>

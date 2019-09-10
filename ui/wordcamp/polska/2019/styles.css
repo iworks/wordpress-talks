@@ -1,0 +1,206 @@
+@media screen {
+    body {
+        background-image: none;
+        font-family: 'Lato', sans-serif;
+    }
+
+    div#header
+    ,div#footer
+    ,.slide h1
+    ,#controls #navLinks a
+    {
+        background-color: #4f504f;
+    }
+
+    div#header {
+        height: 5em;
+        background: #fff url(images/hero-large.jpg) no-repeat 0 100%;
+        border-bottom: 4px solid #ef233c;
+        background-position: bottom;
+        background-size: 100%;
+        position: relative;
+    }
+
+    div#header:before {
+        background-image: linear-gradient(171.18deg,rgba(14,19,68,.7),#0e1344 90.96%);
+        background-color: transparent;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: "";
+        z-index: -1;
+    }
+
+
+    div#header::after {
+        content: "";
+        background: transparent url(images/wclodz-logo-invert.png) no-repeat 30px 50%;
+        background-size: 20vh;
+        right: 0;
+        top: 10px;
+        left: 0;
+        bottom: 10px;
+        position: absolute;
+        z-index: -1;
+
+    }
+
+    .controls {
+        color: #fff;
+    }
+    div#footer,
+    div#currentSlide {
+        color: #000;
+    }
+
+    div#footer {
+        border-top: 4px solid #ef233c;
+        color: #bbb;
+    }
+    div#footer::after {
+        content: "";
+        background: url(images/hero-large.jpg);
+        background-position: bottom;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: .5;
+    }
+    div#footer h1,
+    div#footer h2 {
+        opacity: .8;
+    }
+
+    .main-page.slide h1
+    {
+        border: 0;
+    }
+
+    .main-page.slide h4 {
+        background: transparent url(../../../companies/opi-pbi/opi-pbi.svg) no-repeat;
+        width: 300px;
+        height: 80px;
+        text-indent: -999em;
+        overflow: hidden;
+        background-size: contain;
+    }
+
+    .slide h1
+    {
+        text-transform: none;
+        padding: .5em;
+        border: 1px solid #ef233c;
+        background-color: #fff;
+        right: 100px;
+        left: auto;
+        color: #145;
+    }
+
+    .slide
+    ,#slide0
+    {
+        padding-top: 5.5em;
+    }
+
+    .slide.license ul
+    {
+        font-size: .5em;
+    }
+
+    img.alignright {
+        float: right;
+    }
+
+    #currentSlide {
+
+    }
+
+
+
+    ul.rw {
+        width: 88%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    ul.rw.nowrap {
+        flex-wrap: nowrap;
+    }
+
+    ul.rw li {
+        width: 50%;
+    }
+    ul.rw li img {
+        display: block;
+        margin: 10px auto;
+        max-width: 90%;
+    }
+    ul.rw.fit li img {
+        width: 100%;
+        border: 10px solid white;
+    }
+
+    .fitimage img {
+        display: block;
+        margin: auto;
+        max-height: 100%;
+    }
+
+    .img300 img {
+        width: 300px;
+    }
+
+    .smush {
+        background-image: url(../../../../content/wcpl/2018/banner-1800x690.jpg);
+        background-position: 50% 6em;
+        background-repeat: no-repeat;
+    }
+
+    .slide .dashicons {
+        padding: 10px;
+    }
+
+    .slide .dashicons:before {
+        color: #333;
+    }
+    .questions h2 {
+        font-size: 3em;
+        text-align: center;
+        margin-top: 1em;
+    }
+
+    div#header {
+        height: 25vh;
+    }
+    div#footer {
+        height: 7vh;
+    }
+    .presentation .slide {
+        padding-top: 27vh;
+    }
+    .fit {
+        height: 60vh;
+    }
+    .fit img {
+        height: 100%;
+    }
+    .flex {
+        display: flex;
+        justify-content: center;
+    }
+
+    .lh-gauge {
+        stroke-linecap: round;
+        width: var(--gauge-circle-size);
+        height: var(--gauge-circle-size);
+    }
+}
