@@ -1,0 +1,56 @@
+@media screen {
+
+    body
+    {
+        background-image: none;
+    }
+
+    div#header
+    ,div#footer
+    ,.slide h1
+    ,#controls #navLinks a
+    {
+        background-color: #4f504f;
+    }
+
+    div#header
+    {
+        height: 5em;
+        background: #fff url(images/logo.png) no-repeat 0 100%;
+        border-bottom: 4px solid #e43;
+    }
+
+    div#footer
+    {
+        border-top: 4px solid #e43;
+        background-image: url(images/city.png);
+        background-position: 0 -70px;
+    }
+
+    .main-page.slide h1
+    {
+        border: 0;
+    }
+
+    .slide h1
+    {
+        text-transform: none;
+        padding: .5em;
+        border: 1px solid #e43;
+        background-color: #fff;
+        right: 100px;
+        left: auto;
+        color: #145;
+    }
+
+    .slide
+    ,#slide0
+    {
+        padding-top: 5.5em;
+    }
+
+    .slide.license ul
+    {
+        font-size: .5em;
+    }
+}
