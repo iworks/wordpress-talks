@@ -159,19 +159,6 @@
         width: 300px;
     }
 
-    .smush {
-        background-image: url(../../../../content/wcpl/2018/banner-1800x690.jpg);
-        background-position: 50% 6em;
-        background-repeat: no-repeat;
-    }
-
-    .slide .dashicons {
-        padding: 10px;
-    }
-
-    .slide .dashicons:before {
-        color: #333;
-    }
     .questions h2 {
         font-size: 3em;
         text-align: center;
@@ -184,6 +171,12 @@
     div#footer {
         height: 7vh;
     }
+    .presentation .slide small {
+        opacity: .6;
+    }
+    /**
+     * sizes
+     */
     .presentation .slide {
         padding-top: 27vh;
     }
@@ -197,10 +190,80 @@
         display: flex;
         justify-content: center;
     }
+    .flex img {
+        margin: 0 10px;
+    }
 
     .lh-gauge {
         stroke-linecap: round;
         width: var(--gauge-circle-size);
         height: var(--gauge-circle-size);
+    }
+
+    .small {
+        height: 15vh;
+    }
+    .float-right {
+        float: right;
+    }
+    .small img {
+        height: 15vh;
+        width: 15vh;
+    }
+
+    /**
+     * table
+     */
+    table {
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+    td.aligncenter {
+        text-align: center;
+    }
+    td {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+    tr:nth-child(even) {
+        background: #eee;
+    }
+    /**
+     * google
+     */
+    .score {
+        float: right;
+        text-align: center;
+    }
+    .lh-scorescale {
+        display: inline-flex;
+        font: 16px/1 monospace;
+        border: 1px solid #e0e0e0;
+        padding: 8px;
+        border-radius: 20px;
+        margin: 0 auto;
+    }
+    .lh-scorescale-range {
+        display: flex;
+        align-items: center;
+        margin: 0 12px;
+        white-space: nowrap;
+    }
+    .lh-scorescale-range::before {
+        content: '';
+        width: 18px;
+        height: 6px;
+        border-radius: 10px;
+        display: block;
+        margin-right: 10px;
+    }
+    .lh-scorescale-range--fail:before {
+        background-color: #ff4e42;;
+    }
+    .lh-scorescale-range--average:before {
+        background-color: #ffa400;
+    }
+    .lh-scorescale-range--pass:before {
+        background-color: #0cce6b;
     }
 }
