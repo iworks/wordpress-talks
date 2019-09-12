@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Sprzątaj po sobie</title>
+        <!-- metadata -->
+        <meta name="generator" content="S5" />
+        <meta name="version" content="S5 1.1" />
+        <meta name="presdate" content="20121011" />
+        <meta name="author" content="Marcin Pietrzak" />
+        <meta name="company" content="iworks.pl" />
+        <!-- configuration parameters -->
+        <meta name="defaultView" content="slideshow" />
+        <meta name="controlVis" content="hidden" />
+        <!-- style sheet links -->
+        <link rel="stylesheet" href="../../../../ui/companies/nextwebmedia/slides.css" type="text/css" media="projection" id="slideProj" />
+        <link rel="stylesheet" href="../../../../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+        <link rel="stylesheet" href="../../../../ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+        <!-- embedded styles -->
+        <style type="text/css" media="all">
+            .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
+            #anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
+            #anim img {position: absolute; top: 42px; left: 24px;}
+            img#me01 {top: 0; left: 0;}
+            img#me02 {left: 23px;}
+            img#me04 {top: 44px;}
+            img#me05 {top: 43px;left: 36px;}
+        </style>
+        <!-- S5 JS -->
+        <script src="../../../../ui/default/slides.js" type="text/javascript"></script>
+        <!-- character encoding -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- favicon -->
+        <link href="../../../../ui/companies/nextwebmedia/favicon.ico" rel="Bookmark" />
+        <link href="../../../../ui/companies/nextwebmedia/favicon.ico" rel="shortcut icon" />
+    </head>
+    <body class="wcgda">
+        <!--
+        Prezentacja adresowana jest zarówno do twórców wtyczek, jak i do ich
+        użytkowników. Dla tych pierwszych będzie to zestaw dobrych praktyk, jakie
+        należy umieścić w tworzonej wtyczce. Użytkownicu znajdą kilka istotnych rzeczy
+        na jakie warto zwrócić uwagę przy używaniu, instalowaniu oraz usuwaniu
+        używanych wtyczek. Prezentacja obejmie kwestie związane z wydajnością serwisu,
+        a pomijane zazwyczaj przy tego typu prezentacjach, czyli jak na wydajnośc
+        serwisu wpływa to co przechowują w bazie wtyczki i dlaczego tak się dzieje.
+        Pokazane zostanie jaki wpływ na wydajność miał fakt sprzątnięcia bazy danych po
+        tym, co zostawiły po sobie, prawidłowo wyłączone, a nieprawidłowo napisane
+        wtyczki.
+        -->
+
+        <div class="layout">
+            <div id="controls"><!-- DO NOT EDIT --></div>
+            <div id="currentSlide"><!-- DO NOT EDIT --></div>
+            <div id="header"></div>
+            <div id="footer">
+                <h1>Sprzątaj po sobie!</h1>
+                <h2>WordCamp 2012 Gdańsk</h2>
+            </div>
+        </div>
+
+        <div class="presentation">
+
+            <div class="slide">
+                <h1>Sprzątaj po sobie!</h1>
+                <h2>jak wtyczki mieszają w bazie</h2>
+                <h3>Marcin Pietrzak</h3>
+                <h4><a href="http://nextwebmedia.pl/">NEXTWEBmedia</a></h4>
+            </div>
+
+            <div class="slide">
+                <h1>zysk?</h1>
+                <div class="slidecontent">
+                    <h2>szybkość</h2>
+                    <ul>
+                        <li class="incremental">zapytania do bazy danych</li>
+                        <li class="incremental">przetwarzania pobranych informacji</li>
+                        <li class="incremental">tworzenie wynikowej strony</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Mniejsza baza to krócej trwające selecty, szybciej odbudowywujące się indeksy po insertach.</p>
+                    <p>Mniej danych w komunikaci to mniejszae obciążenie serwera aplikacji i serwera bazy danych.</p>
+                    <p>Krótszy czas generowania strony w dobie Page Speed'a i wpływu tego parametru na wyszukiwanie może mieć kluczowe znaczenie dla strony.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>zysk?</h1>
+                <div class="slidecontent">
+                    <h2>wielkość</h2>
+                    <ul>
+                        <li class="incremental">rozmiar bazy danych</li>
+                        <li class="incremental">liczba tabel</li>
+                        <li class="incremental">alokacja pamięci na przetwarzane dane</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Rozmiar bazy danych zależy w jakimś procencie od daych których nie potrzebujemy.</p>
+                    <p>Większa liczba tabel, to większe ryzyko uszkodzenia i blokady bazy.</p>
+                    <p>Więcej danych to więcej potrzebnego ramu na obsługę strony.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>zysk?</h1>
+                <div class="slidecontent">
+                    <h2>transfer</h2>
+                    <ul>
+                        <li class="incremental">wewnętrzny transfer MySQL &rArr; PHP</li>
+                        <li class="incremental">czasem zewnętrzny</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Transfer wewnętrzny bardzo ważny, zewnętrzny raczej marinalny.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jak to się zaczeło?</h1>
+                <div class="slidecontent">
+                    <h2>problemy i rozwiązania</h2>
+                    <ul class="incremental">
+                        <li>pady serwera aplikacji &rArr; varnish, W3 Total Cache, memcache</li>
+                        <li>pady serwera bazy danych z powodu naprawiania danych &rArr; InnoDB</li>
+                        <li>problemy wydajnościowe serwera danych &rArr; replikacja</li>
+                        <li>nadal problem z bazą?</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Opis sytuacji jaką mieliśmy w sieci blomedia w trakcie rozwiązywania kłopotów z wydajnością.</p>
+                    <ul>
+                        <li>11 serwiswó</li>
+                        <li>~150k wpisów</li>
+                        <li>skumulowany odsłony ~3 mln</li>
+                    </ul>
+                    <p>Przy InnoDB opowiedzieć króciutko o solr'ze.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jak to się zaczeło?</h1>
+                <div class="slidecontent">
+                    <h2>jednak baza</h2>
+                    <p><img src="./graph_image1.png" alt="wykres obciżenia łącza między bazą danych, a aplikacją" /></p>
+                </div>
+                <div class="handout">
+                    <p>Wykres pokazuje poziom transferu między serwerem bazy danych a serwerem aplikacji.</p>
+                    <p>Opowiedzieć o wielokości transferu z serwera cachującego zapytania do aplikacji i zwrócić uwagę, że były mniejsze!</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jak to się zaczeło?</h1>
+                <div class="slidecontent">
+                    <h2>jednak baza</h2>
+                    <ul class="incremental">
+                        <li>analiza zapytań do bazy danych &rArr; WPDB Profiling <small>http://wordpress.org/extend/plugins/wpdb-profiling/</small></li>
+                        <li>analiza tabeli opcji &rArr; Clean Options <small>http://wordpress.org/extend/plugins/clean-options/</small></li>
+                        <li>mysql&gt;<br /><code>select option_name, length(&nbsp;option_value&nbsp;) from wp_options where&nbsp;autoload&nbsp;=&nbsp;'yes' order&nbsp;by&nbsp;2&nbsp;desc limit&nbsp;50;</code></li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Co podlegało analizie, jakie wtyczki zostały wykorzystane i do czego..</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jak to się zaczeło?</h1>
+                <div class="slidecontent">
+                    <h2>zagadnienia</h2>
+                    <ul class="incremental">
+                        <li>nieaktywne wtyczki, które zostawiły strukturę</li>
+                        <li>nieaktywne wtyczki, które zostawiły dane</li>
+                        <li><strike>redukcja potrzebnych danych</strike></li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Znalezienie tych danych i struktur, które zostawiły odistalowane lub skasowane wtyczki.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jak to się zaczeło?</h1>
+                <div class="slidecontent">
+                    <h2>rozwiązanie</h2>
+                    <ul class="incremental">
+                        <li>usunięcie zbędnych tabel</li>
+                        <li><strong>usunięcie zbędnych danych</strong></li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Opis zagadnień związanych z czyszczeniem bazy danych.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jak to się zaczeło?</h1>
+                <div class="slidecontent">
+                    <h2>efekt: spadek obciążenia</h2>
+                    <p><img src="./graph_image2.png" alt="wykres obciżenia łącza między bazą danych, a aplikacją" /></p>
+                </div>
+                <div class="handout">
+                    <p>Wykres prezentuje dramatyczny spadek transferu między bazą danych a aplikacją.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jak powinno się to dziać?</h1>
+                <div class="slidecontent">
+                    <p>wtyczka powinna zadbać o to co znajduje się i co zostawia w bazie danych</p>
+                    <ul class="incremental">
+                        <li>activation hook</li>
+                        <li>deactivation hook</li>
+                        <li>uninstall hook</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Jakie hooki możemy i powinniśmy wykorzystać w trakcie pisanie wtyczki, tylko listing, bez wyjaśniania.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>activation hook</h1>
+                <div class="slidecontent">
+                    <h2>co robimy?</h2>
+                    <ul class="incremental">
+                        <li>struktura bazy danych - instalacja tabel</li>
+                        <li>struktura bazy danych - zmiana tabel i pól</li>
+                        <li>ustawienia danych domyślnych</li>
+                        <li>konwersja istniejących danych</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>W czasie włączania wtyczki możemy zainstalować lub zmodyfikować swoje tabele. To jest też najlepszy moment na zapisanie danych domyślnych.</p>
+                    <p>Włączanie wtyczki w czasie aktualizacji pozwala na konwersję przechowywanych informacji w przypadku ich zmiany między wersjami.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>activation hook</h1>
+                <div class="slidecontent">
+                    <h2>kiedy?</h2>
+                    <ul>
+                        <li class="incremental">włączanie wtyczki po instalacji</li>
+                        <li class="incremental">aktualizacja wtyczki powoduje wyłaczenie i włączenie</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Hook uruchamiany jest zawsze w czasie aktywacji wtyczki, trzeba pamiętać, że w trakcie aktualizacji wtyczka jest uruchamiana.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>deactivation hook</h1>
+                <div class="slidecontent">
+                    <h2>co robimy?</h2>
+                    <ul class="incremental">
+                        <li>kasujemy niepotrzebne dane</li>
+                        <li>kasujemy te ustawienia, które mają domyślne wartości</li>
+                        <li>kasujemy dane z cache</li>
+                        <li>przestawiamy opcjom <strong>autoload</strong> na false</li>
+                        <li>kasujemy tabele tymczasowe</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>W czasie wyłaczania wtyczki musimy bardzo dobrze określić to, które dane należy zachować i odtworzyć przy ponownym włączeniu, a z których powinniśmy zrezygnować.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>deactivation hook</h1>
+                <div class="slidecontent">
+                    <h2>kiedy?</h2>
+                    <ul class="incremental">
+                        <li class="incremental">wyłączanie wtyczki</li>
+                        <li class="incremental">wyłączanie w czasie aktualizacji</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>W czasie deaktywacji wtyczki czyścimy dane tymczasowe oraz cache, jeżeli do pracy tworzone były tabele zawierające dane tymczasowe, kasujemy również takie tabele.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>uninstall hook</h1>
+                <div class="slidecontent">
+                    <h2>co robimy?</h2>
+                    <ul class="incremental">
+                        <li>kasujemy <u>wszystkie</u> dane</li>
+                        <li>kasujemy strukturę</li>
+                        <li>czyścimy cache ze swoich danych</li>
+                        <li>kasujemy dane z tabeli opcji</li>
+                        <li>eventualne zapisanie konfiguracji do jedej zserializowanej nie autoloadowanej zmiennej</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>W czasie usuwania wtyczki kasujemy dane, konfiguracje oraz usuwamy używane tabele.</p>
+                    <p>Można oczwywiście dodać metodą przechowującą konfigurację, ale należy pamiętac o wyłączeniu <b>autoload</b>.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>uninstall hook</h1>
+                <div class="slidecontent">
+                    <h2>kiedy?</h2>
+                    <ul class="incremental">
+                        <li>kasowanie wtyczki z panelu administratora</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Opisać procedurę, zwrócić uwagę na koniecznoeśc wyłaczania wtycek z panelu administratora, zamist ich kasowania, choć to ostatnie jest czasem koniecznością.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>pomocna wtyczka</h1>
+                <div class="slidecontent">
+                    <p><a href="http://wordpress.org/extend/plugins/clean-options/">Clean Options</a> <small>http://wordpress.org/extend/plugins/clean-options/</small></p>
+                    <h2>działania?</h2>
+                    <ul class="incremental">
+                        <li>przglądanie istniejących danych</li>
+                        <li>kasowanie wybranych danych</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Do czego służą te wtyczki i co znimi można zrobić. W czym są pomocne?</p>
+                    <p>Zwrócić uwagę na dynamicznie generowane nazwy wtyczek i na miękkie dopasowania.</p>
+                    <p><b>WP-Options-Manager</b> - nie działa, dostosowana do starego typu WordPressa MU, po poprawkach wywala przeglądarkę, bo próbuje wyświetlić wszystkie znalezione opcje.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>pomocna wtyczka</h1>
+                <div class="slidecontent">
+                    <h2>inne?</h2>
+                    <ul class="incremental">
+                        <li>WPDB Profiling <small>http://wordpress.org/extend/plugins/wpdb-profiling/</small></li>
+                        <li>P3 <small>http://wordpress.org/extend/plugins/p3-profiler/</small></li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Wtyczki do profilowania bazy pomogą również tam, gdzie nie ma jakiś indeksów.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>podsumowanie</h1>
+            <div class="slidecontent">
+                <ul class="incremental">
+                    <li>dla developera: używaj odpowiednich hooków do czyszczenia zbędnych danych</li>
+                    <li>dla wszystkich: deaktywuj i usuwaj wtyczki z panelu wtyczek zamiast kasowania katalgów</li>
+                </ul>
+            </div>
+            <div class="handout">
+                <p>Krótkie podsumowanie zalet sprzątania po sobie.</p>
+            </div>
+        </div>
+
+        <div class="slide license">
+            <h1>Licencja</h1>
+            <div class="slidecontent">
+                <h2><span property="dc:title dct:title" style="display: inline;">Uznanie autorstwa - Na tych samych warunkach 3.0 Unported</span> (<span property="dc:identifier dct:identifier" style="display: inline;">CC BY-SA 3.0</span>)</h2>
+                <h3 resource="http://creativecommons.org/ns#Reproduction" rel="cc:permits">Wolno:</h3>
+                <ul class="license-properties">
+                    <li class="license share" rel="cc:permits" resource="http://creativecommons.org/ns#Distribution">kopiować, rozpowszechniać, odtwarzać i wykonywać utwór</li>
+                    <li class="license remix" rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks">tworzyć utwory zależne </li>
+                    <li class="license commercial">użytkować utwór w sposób komercyjny</li>
+                </ul>
+                <h3>Na następujących warunkach:</h3>
+                <ul dir="ltr" style="text-align: left;" class="license-properties">
+                    <li class="license by" rel="cc:requires" resource="http://creativecommons.org/ns#Attribution"><strong>Uznanie autorstwa</strong> - <span id="attribution-container"> Utwór należy oznaczyć w sposób określony przez Twórcę lub Licencjodawcę</span> </li> 
+                    <li class="license sa" rel="cc:requires" resource="http://creativecommons.org/ns#ShareAlike"><strong>Na tych samych warunkach</strong> - Jeśli zmienia się lub przekształca niniejszy utwór, lub tworzy inny na jego podstawie, można rozpowszechniać powstały w ten sposób nowy utwór tylko na podstawie takiej samej licencji.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide references">
+            <h1>Referencje</h1>
+            <div class="slidecontent">
+                <ol class="references">
+                    <li><a href="http://codex.wordpress.org/Function_Reference/register_activation_hook">Function Reference/register activation hook <small>http://codex.wordpress.org/Function_Reference/register_activation_hook</small></a></li>
+                    <li><a href="http://codex.wordpress.org/Function_Reference/register_deactivation_hook">Function Reference/register deactivation hook <small>http://codex.wordpress.org/Function_Reference/register_deactivation_hook</small></a></li>
+                    <li><a href="http://codex.wordpress.org/Function_Reference/register_uninstall_hook">Function Reference/register uninstall hook <small>http://codex.wordpress.org/Function_Reference/register_uninstall_hook</small></a></li>
+                </ol>
+            </div>
+        </div>
+
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1441929-14']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+
+</script>
+     </body>
+ </html>
+

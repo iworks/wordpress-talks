@@ -55,7 +55,7 @@ div#header, div#footer
 }
 body.wcgda div#header
 {
-    background-image: url(../../wordcamp/polska/2013/bg_top_200.png);
+    background-image: url(../../pl/wordcamp/2012/bg_top_200.png);
     background-repeat: no-repeat;
     background-position: 50% 100%;
 }
@@ -75,14 +75,14 @@ div#footer
 
 body.wcwro div#footer
 {
-    background-image: url(../../wordcamp/polska/2013/logo___.png);
+    background-image: url(../../pl/wordcamp/2012/logo___.png);
     background-position: 20px 100%;
     padding-left: 100px;
 }
 
 body.wcgda div#footer
 {
-    background-image:url(../../wordcamp/polska/2013/background_bottom.png);
+    background-image:url(../../pl/wordcamp/2012/background_bottom.png);
 }
 
 #footer h1, #footer h2 {display: block; padding: 0 1em;}
