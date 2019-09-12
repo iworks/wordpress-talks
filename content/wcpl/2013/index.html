@@ -1,0 +1,464 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Sztuka Wojny</title>
+        <!-- metadata -->
+        <meta name="generator" content="S5" />
+        <meta name="version" content="S5 1.1" />
+        <meta name="presdate" content="20130928" />
+        <meta name="author" content="Marcin Pietrzak" />
+        <meta name="company" content="iworks.pl" />
+        <!-- configuration parameters -->
+        <meta name="defaultView" content="slideshow" />
+        <meta name="controlVis" content="hidden" />
+        <!-- style sheet links -->
+        <link rel="stylesheet" href="../../../ui/companies/nextwebmedia/slides.css" type="text/css" media="projection" id="slideProj" />
+        <link rel="stylesheet" href="../../../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+        <link rel="stylesheet" href="../../../ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+        <!-- embedded styles -->
+        <style type="text/css" media="all">
+            .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
+            #anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
+            #anim img {position: absolute; top: 42px; left: 24px;}
+            img#me01 {top: 0; left: 0;}
+            img#me02 {left: 23px;}
+            img#me04 {top: 44px;}
+            img#me05 {top: 43px;left: 36px;}
+        </style>
+        <!-- S5 JS -->
+        <script src="../../../ui/default/slides.js" type="text/javascript"></script>
+        <!-- character encoding -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- favicon -->
+        <link href="./bing-fa/favicon.ico" rel="Bookmark" />
+        <link href="./bing-fa/favicon.ico" rel="shortcut icon" />
+    </head>
+    <body class="wcwro">
+
+        <div class="layout">
+            <div id="controls"><!-- DO NOT EDIT --></div>
+            <div id="currentSlide"><!-- DO NOT EDIT --></div>
+            <div id="header"></div>
+            <div id="footer">
+                <h1>Sztuka Wojny</h1>
+                <h2>WordCamp 2013 Wrocław</h2>
+            </div>
+        </div>
+
+        <div class="presentation">
+
+            <div class="slide">
+                <h1>Zrób wszystko, nie niszcz niczego!</h1>
+                <h2>jak wykorzystać filtry i akcje</h2>
+                <h3>Marcin Pietrzak</h3>
+                <h4><a href="http://nextwebmedia.pl/">NEXTWEBmedia</a></h4>
+            </div>
+
+            <div class="slide">
+                <h1>Rozpoznanie</h1>
+                <div class="slidecontent">
+                    <span class="symbol">始計</span>
+                    <h2>&nbsp;</h2>
+                    <blockquote>
+                        <p>Poznaj siebie i poznaj wroga, dopiero wtedy twoje zwycięstwo nie będzie zagrożone. Poznaj warunki terenu i pogody, wtedy twoje zwycięstwo będzie całkowite.</p>
+                        <footer>Sun Tzu</footer>
+                    </blockquote>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Rozpoznanie</h1>
+                <div class="slidecontent">
+                    <span class="symbol">始計</span>
+                    <h2>&nbsp;</h2>
+                    <ul>
+                        <li>zmień działanie WordPressa</li>
+                        <li>oddziel kod od WordPressa</li>
+                        <li>pozwól innym coś zrobić</li>
+                        <li>oddziel kod od szablonu</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Zmiana działania WordPressa poprzez zmianę parametrów wejściowych, filtrowanie wyjścia.</p>
+                    <p>Nieingerowanie w kod WordPressa jest oczywistą oczywistością.</p>
+                    <p>Używając filtrów powolasz na zmianę działania motywu/wtyczki, używając akcji pozwalasz na wstrzeliwanie kodu/treści w odpowiednie miejsca.</p>
+                    <p>Przenosząc część własnego kodu poza szablon zachowujesz czystość szablonu, przechowując funkcjonalność tam gdzie trzeba.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Prowadzenie Wojny</h1>
+                <div class="slidecontent">
+                    <span class="symbol">作戰</span>
+                    <h2>&nbsp;</h2>
+                    <blockquote>
+                        <p>Kolejność ta jest zupełnie jasna. Kiedy oddziały gotowe są do odparcia agresora, rozpatruje się najpierw argumenty stron, możliwość ugody, odwagę nieprzyjaciela, nastepnie warunki danej pory roku i na koncu trudności terenu.</p>
+                        <footer>Chang Yü</footer>
+                    </blockquote>
+                </div>
+                <div class="handout">
+                    <p>Przygotowanie do działania.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Prowadzenie Wojny</h1>
+                <div class="slidecontent">
+                    <span class="symbol">作戰</span>
+                    <h2>Działaj</h2>
+                    <ul>
+                        <li>add_action</li>
+                        <li>do_action</li>
+                        <li>do_action_ref_array</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Czym jest akcja i do czego służy.</p>
+                    <p>Dodawanie wywołania akcji.</p>
+                    <p>Jak dodać akcję.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Prowadzenie Wojny</h1>
+                <div class="slidecontent">
+                    <span class="symbol">作戰</span>
+                    <h2>Zmieniaj</h2>
+                    <ul>
+                        <li>add_filter</li>
+                        <li>apply_filters</li>
+                        <li>apply_filters_ref_array</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Czym jest filtr i do czego służy.</p>
+                    <p>Jak dodać filtr.</p>
+                    <p>Dodawanie filtrów.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Prowadzenie Wojny</h1>
+                <div class="slidecontent">
+                    <span class="symbol">作戰</span>
+                    <h2>Sprawdzaj</h2>
+                    <ul>
+                        <li>has_action</li>
+                        <li>has_filter</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Sprawdzamy czy dana akcja/filtr istnieje.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Prowadzenie Wojny</h1>
+                <div class="slidecontent">
+                    <span class="symbol">作戰</span>
+                    <h2>Usuwaj</h2>
+                    <ul>
+                        <li>remove_action</li>
+                        <li>remove_all_actions</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>usuwamy w razie potrzeby</p>
+                    <p>Opowiedzieć o zagnieżdżających się akcjach.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Prowadzenie Wojny</h1>
+                <div class="slidecontent">
+                    <span class="symbol">火攻</span>
+                    <h2>Usuwaj</h2>
+                    <ul>
+                        <li>remove_filter</li>
+                        <li>remove_all_filters</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Potencjał</h1>
+                <div class="slidecontent">
+                    <h2></h2>
+                    <span class="symbol">軍形</span>
+                    <ul>
+                        <li>kontrola</li>
+                        <li>władza</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Siła Rażenia</h1>
+                <div class="slidecontent">
+                    <h2></h2>
+                    <span class="symbol">兵勢</span>
+                    <ul>
+                        <li>czytanie</li>
+                        <li>zapisywanie</li>
+                        <li>wyświetlanie</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>czytanie - zarówno z bazy, jaki i parametrów</p>
+                    <p>zapisywanie do bazy</p>
+                    <p>wyświetlanie danych</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Słabości</h1>
+                <div class="slidecontent">
+                    <span class="symbol">虛實</span>
+                    <h2>Błędy</h2>
+                    <ul>
+                        <li>przestarzałe nazwy</li>
+                        <li>zły czas dodania</li>
+                        <li>wypisywanie w filtrach</li>
+                        <li>brak lub złe dane zwracane przez filtr</li>
+                        <li>parametry przy wyłączaniu</li>
+                        <li>brak parametrów</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>jpeg_quality (deprecated)</p>
+                    <p>Zły czas dodania - dodawanie akcji/filtra już po tym jak zostanie wywołany.</p>
+                    <p>Filtry zawsze muszą zwracać dane, NIGDY nie mogą wypisywać rzeczy na wyjście.</p>
+                    <p>Zły typ zmiennej zwracanej przez filtr, albo brak danych.</p>
+                    <p>Niezgodność danych przy próbie wyłączenia filtra/akcji w rezultacie niemożność jego wyłączenia.</p>
+                    <p>Bra oczekiwanych parametrów, zazwyczaj powoduje cichą śmierć wywołania.</p>
+                </div>
+            </div>
+
+            <!--
+            <div class="slide">
+                <h1>Przewaga</h1>
+                <div class="slidecontent">
+                    <span class="symbol">軍爭</span>
+                    <h2>&nbsp;</h2>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Taktyka</h1>
+                <div class="slidecontent">
+                    <span class="symbol">九變</span>
+                    <h2>&nbsp;</h2>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+            -->
+
+            <div class="slide">
+                <h1>Ruchy Wojsk</h1>
+                <div class="slidecontent">
+                    <span class="symbol">行軍</span>
+                    <h2>&nbsp;</h2>
+                    <blockquote>
+                        <p>Nie przewiduję w swoich planach zbędnych ruchów i ani jednego kroku w desperacji.</p>
+                        <footer>Chen Hao</footer>
+                    </blockquote>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Ruchy Wojsk</h1>
+                <div class="slidecontent">
+                    <span class="symbol">行軍</span>
+                    <h2>&nbsp;</h2>
+                    <ul>
+                        <li>dynamiczne dodawanie</li>
+                        <li>usuwanie po wykonaniu</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Dodać przypadek tworzenia akcji po wpisie w celach reklamowych.</p>
+                    <p>Dodać przypadek zdejmowania akcji po pierwszym wpisie.</p>
+                </div>
+            </div>
+
+            <!--
+            <div class="slide">
+                <h1>Topografia</h1>
+                <div class="slidecontent">
+                    <span class="symbol">地形</span>
+                    <h2>&nbsp;</h2>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+            -->
+
+            <div class="slide">
+                <h1>9 rodzajów terenu</h1>
+                <div class="slidecontent">
+                    <span class="symbol">九地</span>
+                    <h2>WordPress</h2>
+                    <ul>
+                        <li>after_setup_theme</li>
+                        <li>init</li>
+                        <li>parse_request</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Opis podstawowych akcji dla motywu dla WordPressa.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>9 rodzajów terenu</h1>
+                <div class="slidecontent">
+                    <span class="symbol">九地</span>
+                    <h2>Motyw</h2>
+                    <ul>
+                        <li>wp_enqueue_scripts</li>
+                        <li>wp_head</li>
+                        <li>wp_footer</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Opis podstawowych akcji dla motywu dla dokumentów.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>9 rodzajów terenu</h1>
+                <div class="slidecontent">
+                    <span class="symbol">九地</span>
+                    <h2>Treść</h2>
+                    <ul>
+                        <li>the_title</li>
+                        <li>the_excerpt</li>
+                        <li>the_content</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Opis podstawowych filtrów dla dokumentów.</p>
+                </div>
+            </div>
+
+
+            <div class="slide">
+                <h1>Użycie Szpiegów</h1>
+                <div class="slidecontent">
+                    <span class="symbol">用間</span>
+                    <h2></h2>
+                    <blockquote>
+                        <p>Kiedy wróg wysyła szpiegów, aby śledzili moje posunięcia lub starali się je uniemożliwić, ja staram się ich przepłacić, a następnie wysyłam ich z powrotem, w ten sposób czyniąc z nich moich agentów.</p>
+                        <footer>Li Ch’üan</footer>
+                    </blockquote>
+
+                </div>
+                <div class="handout">
+                    <p>$wp_filter - zawiera wszystkie wywołania
+                </div>
+            </div>
+            <div class="slide">
+                <h1>Użycie Szpiegów</h1>
+                <div class="slidecontent">
+                    <span class="symbol">用間</span>
+                    <h2></h2>
+                    <ul>
+                        <li>$wp_filter</li>
+                        <li>current_filter()</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>$wp_filter - zawiera wszystkie wywołania
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Podsumowanie</h1>
+                <div class="slidecontent">
+                    <blockquote>
+                        <p>Jeśli potrafisz zmusić wroga do poddania się bez walki, nikt nie zaprzeczy twojej wartości.</p>
+                        <footer>Ho Yen-hsi</footer>
+                    </blockquote>
+                    <ul>
+                        <li>używaj akcje</li>
+                        <li>używaj filtrów</li>
+                        <li>dodawaj akcje</li>
+                        <li>dodawaj filtry</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <p>Krótkie podsumowanie zalet sprzątania po sobie.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>O mnie</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Marcin Pietrzak</li>
+                        <li>http://iworks.pl/</li>
+                        <li>marcin@iworks.pl</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <div class="slide license">
+                <h1>Licencja</h1>
+                <div class="slidecontent">
+                    <h2><span property="dc:title dct:title" style="display: inline;">Uznanie autorstwa - Na tych samych warunkach 3.0 Unported</span> (<span property="dc:identifier dct:identifier" style="display: inline;">CC BY-SA 3.0</span>)</h2>
+                    <h3 resource="http://creativecommons.org/ns#Reproduction" rel="cc:permits">Wolno:</h3>
+                    <ul class="license-properties">
+                        <li class="license share" rel="cc:permits" resource="http://creativecommons.org/ns#Distribution">kopiować, rozpowszechniać, odtwarzać i wykonywać utwór</li>
+                        <li class="license remix" rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks">tworzyć utwory zależne </li>
+                        <li class="license commercial">użytkować utwór w sposób komercyjny</li>
+                    </ul>
+                    <h3>Na następujących warunkach:</h3>
+                    <ul dir="ltr" style="text-align: left;" class="license-properties">
+                        <li class="license by" rel="cc:requires" resource="http://creativecommons.org/ns#Attribution"><strong>Uznanie autorstwa</strong> - <span id="attribution-container"> Utwór należy oznaczyć w sposób określony przez Twórcę lub Licencjodawcę</span> </li> 
+                        <li class="license sa" rel="cc:requires" resource="http://creativecommons.org/ns#ShareAlike"><strong>Na tych samych warunkach</strong> - Jeśli zmienia się lub przekształca niniejszy utwór, lub tworzy inny na jego podstawie, można rozpowszechniać powstały w ten sposób nowy utwór tylko na podstawie takiej samej licencji.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide references">
+                <h1>Referencje</h1>
+                <div class="slidecontent">
+                    <ol class="references">
+                        <li><a href="http://codex.wordpress.org/Plugin_API/Action_Reference">Plugin API/Action Reference <small>http://codex.wordpress.org/Plugin_API/Action_Reference</small></a></li>
+                        <li><a href="http://codex.wordpress.org/Plugin_API/Filter_Reference">Plugin API/Filter Reference <small>http://codex.wordpress.org/Plugin_API/Filter_Reference</small></a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1441929-14']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+             })();
+
+         </script>
+     </body>
+ </html>
+
