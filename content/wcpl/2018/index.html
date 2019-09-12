@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <title>Obrazki – typy, optymalizacja, metody</title>
+        <!-- metadata -->
+        <meta name="generator" content="S5" />
+        <meta name="version" content="S5 1.1" />
+        <meta name="presdate" content="20180708" />
+        <meta name="author" content="" />
+        <meta name="company" content="" />
+        <!-- configuration parameters -->
+        <meta name="defaultView" content="slideshow" />
+        <meta name="controlVis" content="hidden" />
+        <!-- style sheet links -->
+        <link rel="stylesheet" href="../../../ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+        <link rel="stylesheet" href="../../../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+        <link rel="stylesheet" href="../../../ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+        <link rel="stylesheet" href="../../../ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+        <link rel="stylesheet" href="../../../ui/wordcamp/polska/2018/styles.css" type="text/css" />
+        <link rel='stylesheet' id='dashicons-css'  href='../../../fonts/dashicons.min.css?ver=5.0-alpha-43406' type='text/css' media='all' />
+        <!-- S5 JS -->
+        <script src="../../../ui/default/slides.js" type="text/javascript"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- Google Font: Lato -->
+        <link href="../../../fonts/lato/lato.css" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <div class="layout">
+            <div id="controls"><!-- DO NOT EDIT --></div>
+            <div id="currentSlide"><!-- DO NOT EDIT --></div>
+            <div id="header"></div>
+            <div id="footer">
+                <h1>WordCamp 2018 Polska</h1>
+                <h2>Obrazki – typy, optymalizacja, metody</h2>
+            </div>
+
+        </div>
+
+        <div class="presentation">
+
+            <div class="slide main-page">
+                <h1>Obrazki – typy, optymalizacja, metody</h1>
+                <h3>Marcin Pietrzak</h3>
+                <h4><a href="https://premium.wpmudev.org">WPMU DEV</a></h4>
+            </div>
+
+            <div class="slide">
+                <h1>o mnie</h1>
+                <div class="slidecontent">
+                    <img src="../../common/mp.jpg" class="alignright" />
+                    <ul>
+                        <li>Marcin Pietrzak</li>
+                        <li>WPMU DEV</li>
+                        <li>iworks.pl</li>
+                        <li>marcin@iworks.pl</li>
+                    </ul>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>cel prezentacji</h1>
+                    <ul>
+                        <li>definicja</li>
+                        <li>wybór</li>
+                        <li>WordPress</li>
+                        <li>wtyczki</li>
+                    </ul>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <h1>rodzaj</h1>
+                <div class="slidecontent">
+                    <ul class="rw">
+                        <li>raster<img src="./5o5.png" />2002</li>
+                        <li>wektor<img src="./5o5.svg" />1323 (615)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>rodzaj</h1>
+                <div class="slidecontent">
+                    <ul class="rw fit">
+                        <li>raster<img src="./5o5.png" />2002</li>
+                        <li>wektor<img src="./5o5.svg" />1323 (615)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>definicja - pliki</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>gif</li>
+                        <li>png</li>
+                        <li>jpg</li>
+                        <li>svg</li>
+                        <li>czcionka</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>gif</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>paleta</li>
+                        <li>animacja</li>
+                        <li>LZW (patent)</li>
+                        <li>przezroczystość</li>
+                    </ul>
+                </div>
+                <div class="handout">
+Graphics Interchange Format
+LZW - Lempel-Ziv-Welch - strumieniowa kompresja słownikowa
+256 kolorów z palety 24-bit
+bloki mogą mieć własne palety
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>gif</h1>
+                <div class="slidecontent fitimage">
+                    <img src="./FullColourGIF.gif" />
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>png</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>bezstratna kompresja</li>
+                        <li>kolory</li>
+                        <li>deflate</li>
+                        <li>przeplot</li>
+                    </ul>
+                </div>
+                <div class="handout">
+Portable Network Graphics
+deflate - niopatentowana komplresja, szeroko dostępna jako zlib
+paleta - od 1 do 64 bitów na piksel
+przeplot - umożliwia wcześniejsze wyświetlanie - Adam7
+                        <li>wybór palety</li>
+                        <li>kanał alfa</li>
+                        <li>tylko RGB</li>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jpg</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>kompresja</li>
+                        <li>jakość</li>
+                        <li>powszechność</li>
+                        <li>prostota</li>
+                    </ul>
+                </div>
+                <div class="handout">
+Joint Photographic Experts Group
+
+Algorytm kompresji:
+
+zamiana przestrzeni kolorów z RGB na kanał jasności i dwa kanały koloru. Ludzie znacznie dokładniej postrzegają drobne różnice jasności od drobnych różnic barwy, a więc użyteczne jest tutaj użycie różnych parametrów kompresji. Krok nie jest obowiązkowy.
+obniżenie rozdzielczości kanałów koloru (podpróbkowanie chrominancji), zwykle odrzuca się co drugą wartość wzdłuż osi poziomej i każdą na pionowej, choć możliwe są też inne ustawienia. Tak radykalne cięcie danych nieznacznie wpływa na jakość, ponieważ rozdzielczość postrzegania kolorów przez ludzkie oko jest słaba. Krok nie jest obowiązkowy.
+podzielenie każdego kanału obrazka na bloki 8×8. W przypadku kanałów kolorów, jest to 8×8 rzeczywistych danych, a więc zwykle 16×8.
+transformata kosinusowa każdego z bloków. Zamiast wartości pikseli mamy teraz średnią wartość wewnątrz bloku oraz częstotliwości zmian wewnątrz bloku, obie wyrażone przez liczby zmiennoprzecinkowe. Transformata DCT jest odwracalna, więc na razie nie tracimy żadnych danych.
+Zastąpienie średnich wartości bloków przez różnice wobec wartości poprzedniej. Poprawia to w pewnym stopniu współczynnik kompresji.
+Kwantyzacja, czyli zastąpienie danych zmiennoprzecinkowych przez liczby całkowite. Tutaj właśnie następuje utrata precyzji danych. Zależnie od parametrów kompresora, odrzuca się mniej lub więcej danych. Zasadniczo większa dokładność jest stosowana do danych dotyczących niskich częstotliwości niż wysokich, kodowanych algorytmem Huffmana.
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jpg</h1>
+                <div class="slidecontent">
+                    <ul class="rw fit">
+                        <li>82k (20%)<img src="./malina-20.jpg" /></li>
+                        <li>440k (90%)<img src="./malina-90.jpg" /></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>jpg</h1>
+                <div class="slidecontent">
+                    <ul class="rw fit">
+                        <li>20%<img src="./malina-20-zoom.png" /></li>
+                        <li>90%<img src="./malina-90-zoom.png" /></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>svg</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>wielkość</li>
+                        <li>skalowalność</li>
+                        <li>dynamiczne</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>225x300</h1>
+                <div class="slidecontent">
+                    <ul class="rw img300">
+                        <li>svg (1323)<img src="./5o5.svg" /></li>
+                        <li>gif (1324)<img src="./5o5-300.gif" /></li>
+                        <li>png (5058)<img src="./5o5-300.png" /></li>
+                        <li>jpg (10553)<img src="./5o5-300.jpg" /></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>500x500</h1>
+                <div class="slidecontent">
+                    <ul class="rw nowrap">
+                        <li>gif (147K)<img src="./malina-500.gif" /></li>
+                        <li>png (410K)<img src="./malina-500.png" /></li>
+                        <li>jpg (89K) 80%<img src="./malina-500.jpg" /></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>dashicons</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>wielkość</li>
+                        <li>skalowalność</li>
+                        <li>
+                            <div alt="f333" class="dashicons dashicons-menu"></div>
+                            <div alt="f319" class="dashicons dashicons-admin-site"></div>
+                            <div alt="f226" class="dashicons dashicons-dashboard"></div>
+                            <div alt="f109" class="dashicons dashicons-admin-post"></div>
+                            <div alt="f104" class="dashicons dashicons-admin-media"></div>
+                            <div alt="f103" class="dashicons dashicons-admin-links"></div>
+                            <div alt="f105" class="dashicons dashicons-admin-page"></div>
+                            <div alt="f101" class="dashicons dashicons-admin-comments"></div>
+                            <div alt="f100" class="dashicons dashicons-admin-appearance"></div>
+                            <div alt="f106" class="dashicons dashicons-admin-plugins"></div>
+                            <div alt="f110" class="dashicons dashicons-admin-users"></div>
+                            <div alt="f107" class="dashicons dashicons-admin-tools"></div>
+                            <div alt="f108" class="dashicons dashicons-admin-settings"></div>
+                            <div alt="f112" class="dashicons dashicons-admin-network"></div>
+                            <div alt="f102" class="dashicons dashicons-admin-home"></div>
+                            <div alt="f111" class="dashicons dashicons-admin-generic"></div>
+                            <div alt="f148" class="dashicons dashicons-admin-collapse"></div>
+                            <div alt="f536" class="dashicons dashicons-filter"></div>
+                            <div alt="f540" class="dashicons dashicons-admin-customizer"></div>
+                            <div alt="f541" class="dashicons dashicons-admin-multisite"></div>
+                            <div alt="f119" class="dashicons dashicons-welcome-write-blog"></div>
+                            <div alt="f133" class="dashicons dashicons-welcome-add-page"></div>
+                            <div alt="f115" class="dashicons dashicons-welcome-view-site"></div>
+                            <div alt="f116" class="dashicons dashicons-welcome-widgets-menus"></div>
+                            <div alt="f117" class="dashicons dashicons-welcome-comments"></div>
+                            <div alt="f118" class="dashicons dashicons-welcome-learn-more"></div>
+                            <div alt="f123" class="dashicons dashicons-format-aside"></div>
+                            <div alt="f128" class="dashicons dashicons-format-image"></div>
+                            <div alt="f161" class="dashicons dashicons-format-gallery"></div>
+                            <div alt="f126" class="dashicons dashicons-format-video"></div>
+                            <div alt="f130" class="dashicons dashicons-format-status"></div>
+                            <div alt="f122" class="dashicons dashicons-format-quote"></div>
+                            <div alt="f125" class="dashicons dashicons-format-chat"></div>
+                            <div alt="f127" class="dashicons dashicons-format-audio"></div>
+                            <div alt="f306" class="dashicons dashicons-camera"></div>
+                            <div alt="f232" class="dashicons dashicons-images-alt"></div>
+                            <div alt="f233" class="dashicons dashicons-images-alt2"></div>
+                            <div alt="f234" class="dashicons dashicons-video-alt"></div>
+                            <div alt="f235" class="dashicons dashicons-video-alt2"></div>
+                            <div alt="f236" class="dashicons dashicons-video-alt3"></div>
+                            <div alt="f501" class="dashicons dashicons-media-archive"></div>
+                            <div alt="f500" class="dashicons dashicons-media-audio"></div>
+                            <div alt="f499" class="dashicons dashicons-media-code"></div>
+                            <div alt="f498" class="dashicons dashicons-media-default"></div>
+                            <div alt="f497" class="dashicons dashicons-media-document"></div>
+                            <div alt="f496" class="dashicons dashicons-media-interactive"></div>
+                            <div alt="f495" class="dashicons dashicons-media-spreadsheet"></div>
+                            <div alt="f491" class="dashicons dashicons-media-text"></div>
+                            <div alt="f490" class="dashicons dashicons-media-video"></div>
+                            <div alt="f492" class="dashicons dashicons-playlist-audio"></div>
+                            <div alt="f493" class="dashicons dashicons-playlist-video"></div>
+                            <div alt="f522" class="dashicons dashicons-controls-play"></div>
+                            <div alt="f523" class="dashicons dashicons-controls-pause"></div>
+                            <div alt="f519" class="dashicons dashicons-controls-forward"></div>
+                            <div alt="f517" class="dashicons dashicons-controls-skipforward"></div>
+                            <div alt="f518" class="dashicons dashicons-controls-back"></div>
+                            <div alt="f516" class="dashicons dashicons-controls-skipback"></div>
+                            <div alt="f515" class="dashicons dashicons-controls-repeat"></div>
+                            <div alt="f521" class="dashicons dashicons-controls-volumeon"></div>
+                            <div alt="f520" class="dashicons dashicons-controls-volumeoff"></div>
+                            <div alt="f165" class="dashicons dashicons-image-crop"></div>
+                            <div alt="f531" class="dashicons dashicons-image-rotate"></div>
+                            <div alt="f166" class="dashicons dashicons-image-rotate-left"></div>
+                            <div alt="f167" class="dashicons dashicons-image-rotate-right"></div>
+                            <div alt="f168" class="dashicons dashicons-image-flip-vertical"></div>
+                            <div alt="f169" class="dashicons dashicons-image-flip-horizontal"></div>
+                            <div alt="f533" class="dashicons dashicons-image-filter"></div>
+                            <div alt="f171" class="dashicons dashicons-undo"></div>
+                            <div alt="f172" class="dashicons dashicons-redo"></div>
+                            <div alt="f200" class="dashicons dashicons-editor-bold"></div>
+                            <div alt="f201" class="dashicons dashicons-editor-italic"></div>
+                            <div alt="f203" class="dashicons dashicons-editor-ul"></div>
+                            <div alt="f204" class="dashicons dashicons-editor-ol"></div>
+                            <div alt="f205" class="dashicons dashicons-editor-quote"></div>
+                            <div alt="f206" class="dashicons dashicons-editor-alignleft"></div>
+                            <div alt="f207" class="dashicons dashicons-editor-aligncenter"></div>
+                            <div alt="f208" class="dashicons dashicons-editor-alignright"></div>
+                            <div alt="f209" class="dashicons dashicons-editor-insertmore"></div>
+                            <div alt="f210" class="dashicons dashicons-editor-spellcheck"></div>
+                            <div alt="f211" class="dashicons dashicons-editor-expand"></div>
+                            <div alt="f506" class="dashicons dashicons-editor-contract"></div>
+                            <div alt="f212" class="dashicons dashicons-editor-kitchensink"></div>
+                            <div alt="f213" class="dashicons dashicons-editor-underline"></div>
+                            <div alt="f214" class="dashicons dashicons-editor-justify"></div>
+                            <div alt="f215" class="dashicons dashicons-editor-textcolor"></div>
+                            <div alt="f216" class="dashicons dashicons-editor-paste-word"></div>
+                            <div alt="f217" class="dashicons dashicons-editor-paste-text"></div>
+                            <div alt="f218" class="dashicons dashicons-editor-removeformatting"></div>
+                            <div alt="f219" class="dashicons dashicons-editor-video"></div>
+                            <div alt="f220" class="dashicons dashicons-editor-customchar"></div>
+                            <div alt="f221" class="dashicons dashicons-editor-outdent"></div>
+                            <div alt="f222" class="dashicons dashicons-editor-indent"></div>
+                            <div alt="f223" class="dashicons dashicons-editor-help"></div>
+                            <div alt="f224" class="dashicons dashicons-editor-strikethrough"></div>
+                            <div alt="f225" class="dashicons dashicons-editor-unlink"></div>
+                            <div alt="f320" class="dashicons dashicons-editor-rtl"></div>
+                            <div alt="f474" class="dashicons dashicons-editor-break"></div>
+                            <div alt="f475" class="dashicons dashicons-editor-code"></div>
+                            <div alt="f476" class="dashicons dashicons-editor-paragraph"></div>
+                            <div alt="f535" class="dashicons dashicons-editor-table"></div>
+                            <div alt="f135" class="dashicons dashicons-align-left"></div>
+                            <div alt="f136" class="dashicons dashicons-align-right"></div>
+                            <div alt="f134" class="dashicons dashicons-align-center"></div>
+                            <div alt="f138" class="dashicons dashicons-align-none"></div>
+                            <div alt="f160" class="dashicons dashicons-lock"></div>
+                            <div alt="f528" class="dashicons dashicons-unlock"></div>
+                            <div alt="f145" class="dashicons dashicons-calendar"></div>
+                            <div alt="f508" class="dashicons dashicons-calendar-alt"></div>
+                            <div alt="f177" class="dashicons dashicons-visibility"></div>
+                            <div alt="f530" class="dashicons dashicons-hidden"></div>
+                            <div alt="f173" class="dashicons dashicons-post-status"></div>
+                            <div alt="f464" class="dashicons dashicons-edit"></div>
+                            <div alt="f182" class="dashicons dashicons-trash"></div>
+                            <div alt="f537" class="dashicons dashicons-sticky"></div>
+                            <div alt="f504" class="dashicons dashicons-external"></div>
+                            <div alt="f142" class="dashicons dashicons-arrow-up"></div>
+                            <div alt="f140" class="dashicons dashicons-arrow-down"></div>
+                            <div alt="f139" class="dashicons dashicons-arrow-right"></div>
+                            <div alt="f141" class="dashicons dashicons-arrow-left"></div>
+                            <div alt="f342" class="dashicons dashicons-arrow-up-alt"></div>
+                            <div alt="f346" class="dashicons dashicons-arrow-down-alt"></div>
+                            <div alt="f344" class="dashicons dashicons-arrow-right-alt"></div>
+                            <div alt="f340" class="dashicons dashicons-arrow-left-alt"></div>
+                            <div alt="f343" class="dashicons dashicons-arrow-up-alt2"></div>
+                            <div alt="f347" class="dashicons dashicons-arrow-down-alt2"></div>
+                            <div alt="f345" class="dashicons dashicons-arrow-right-alt2"></div>
+                            <div alt="f341" class="dashicons dashicons-arrow-left-alt2"></div>
+                            <div alt="f156" class="dashicons dashicons-sort"></div>
+                            <div alt="f229" class="dashicons dashicons-leftright"></div>
+                            <div alt="f503" class="dashicons dashicons-randomize"></div>
+                            <div alt="f163" class="dashicons dashicons-list-view"></div>
+                            <div alt="f164" class="dashicons dashicons-exerpt-view"></div>
+                            <div alt="f509" class="dashicons dashicons-grid-view"></div>
+                            <div alt="f545" class="dashicons dashicons-move"></div>
+                            <div alt="f237" class="dashicons dashicons-share"></div>
+                            <div alt="f240" class="dashicons dashicons-share-alt"></div>
+                            <div alt="f242" class="dashicons dashicons-share-alt2"></div>
+                            <div alt="f301" class="dashicons dashicons-twitter"></div>
+                            <div alt="f303" class="dashicons dashicons-rss"></div>
+                            <div alt="f465" class="dashicons dashicons-email"></div>
+                            <div alt="f466" class="dashicons dashicons-email-alt"></div>
+                            <div alt="f304" class="dashicons dashicons-facebook"></div>
+                            <div alt="f305" class="dashicons dashicons-facebook-alt"></div>
+                            <div alt="f462" class="dashicons dashicons-googleplus"></div>
+                            <div alt="f325" class="dashicons dashicons-networking"></div>
+                            <div alt="f308" class="dashicons dashicons-hammer"></div>
+                            <div alt="f309" class="dashicons dashicons-art"></div>
+                            <div alt="f310" class="dashicons dashicons-migrate"></div>
+                            <div alt="f311" class="dashicons dashicons-performance"></div>
+                            <div alt="f483" class="dashicons dashicons-universal-access"></div>
+                            <div alt="f507" class="dashicons dashicons-universal-access-alt"></div>
+                            <div alt="f486" class="dashicons dashicons-tickets"></div>
+                            <div alt="f484" class="dashicons dashicons-nametag"></div>
+                            <div alt="f481" class="dashicons dashicons-clipboard"></div>
+                            <div alt="f487" class="dashicons dashicons-heart"></div>
+                            <div alt="f488" class="dashicons dashicons-megaphone"></div>
+                            <div alt="f489" class="dashicons dashicons-schedule"></div>
+                            <div alt="f120" class="dashicons dashicons-wordpress"></div>
+                            <div alt="f324" class="dashicons dashicons-wordpress-alt"></div>
+                            <div alt="f157" class="dashicons dashicons-pressthis"></div>
+                            <div alt="f463" class="dashicons dashicons-update"></div>
+                            <div alt="f180" class="dashicons dashicons-screenoptions"></div>
+                            <div alt="f348" class="dashicons dashicons-info"></div>
+                            <div alt="f174" class="dashicons dashicons-cart"></div>
+                            <div alt="f175" class="dashicons dashicons-feedback"></div>
+                            <div alt="f176" class="dashicons dashicons-cloud"></div>
+                            <div alt="f326" class="dashicons dashicons-translation"></div>
+                            <div alt="f323" class="dashicons dashicons-tag"></div>
+                            <div alt="f318" class="dashicons dashicons-category"></div>
+                            <div alt="f480" class="dashicons dashicons-archive"></div>
+                            <div alt="f479" class="dashicons dashicons-tagcloud"></div>
+                            <div alt="f478" class="dashicons dashicons-text"></div>
+                            <div alt="f147" class="dashicons dashicons-yes"></div>
+                            <div alt="f158" class="dashicons dashicons-no"></div>
+                            <div alt="f335" class="dashicons dashicons-no-alt"></div>
+                            <div alt="f132" class="dashicons dashicons-plus"></div>
+                            <div alt="f502" class="dashicons dashicons-plus-alt"></div>
+                            <div alt="f460" class="dashicons dashicons-minus"></div>
+                            <div alt="f153" class="dashicons dashicons-dismiss"></div>
+                            <div alt="f159" class="dashicons dashicons-marker"></div>
+                            <div alt="f155" class="dashicons dashicons-star-filled"></div>
+                            <div alt="f459" class="dashicons dashicons-star-half"></div>
+                            <div alt="f154" class="dashicons dashicons-star-empty"></div>
+                            <div alt="f227" class="dashicons dashicons-flag"></div>
+                            <div alt="f534" class="dashicons dashicons-warning"></div>
+                            <div alt="f230" class="dashicons dashicons-location"></div>
+                            <div alt="f231" class="dashicons dashicons-location-alt"></div>
+                            <div alt="f178" class="dashicons dashicons-vault"></div>
+                            <div alt="f332" class="dashicons dashicons-shield"></div>
+                            <div alt="f334" class="dashicons dashicons-shield-alt"></div>
+                            <div alt="f468" class="dashicons dashicons-sos"></div>
+                            <div alt="f179" class="dashicons dashicons-search"></div>
+                            <div alt="f181" class="dashicons dashicons-slides"></div>
+                            <div alt="f183" class="dashicons dashicons-analytics"></div>
+                            <div alt="f184" class="dashicons dashicons-chart-pie"></div>
+                            <div alt="f185" class="dashicons dashicons-chart-bar"></div>
+                            <div alt="f238" class="dashicons dashicons-chart-line"></div>
+                            <div alt="f239" class="dashicons dashicons-chart-area"></div>
+                            <div alt="f307" class="dashicons dashicons-groups"></div>
+                            <div alt="f338" class="dashicons dashicons-businessman"></div>
+                            <div alt="f336" class="dashicons dashicons-id"></div>
+                            <div alt="f337" class="dashicons dashicons-id-alt"></div>
+                            <div alt="f312" class="dashicons dashicons-products"></div>
+                            <div alt="f313" class="dashicons dashicons-awards"></div>
+                            <div alt="f314" class="dashicons dashicons-forms"></div>
+                            <div alt="f473" class="dashicons dashicons-testimonial"></div>
+                            <div alt="f322" class="dashicons dashicons-portfolio"></div>
+                            <div alt="f330" class="dashicons dashicons-book"></div>
+                            <div alt="f331" class="dashicons dashicons-book-alt"></div>
+                            <div alt="f316" class="dashicons dashicons-download"></div>
+                            <div alt="f317" class="dashicons dashicons-upload"></div>
+                            <div alt="f321" class="dashicons dashicons-backup"></div>
+                            <div alt="f469" class="dashicons dashicons-clock"></div>
+                            <div alt="f339" class="dashicons dashicons-lightbulb"></div>
+                            <div alt="f482" class="dashicons dashicons-microphone"></div>
+                            <div alt="f472" class="dashicons dashicons-desktop"></div>
+                            <div alt="f547" class="dashicons dashicons-laptop"></div>
+                            <div alt="f471" class="dashicons dashicons-tablet"></div>
+                            <div alt="f470" class="dashicons dashicons-smartphone"></div>
+                            <div alt="f525" class="dashicons dashicons-phone"></div>
+                            <div alt="f510" class="dashicons dashicons-index-card"></div>
+                            <div alt="f511" class="dashicons dashicons-carrot"></div>
+                            <div alt="f512" class="dashicons dashicons-building"></div>
+                            <div alt="f513" class="dashicons dashicons-store"></div>
+                            <div alt="f514" class="dashicons dashicons-album"></div>
+                            <div alt="f527" class="dashicons dashicons-palmtree"></div>
+                            <div alt="f524" class="dashicons dashicons-tickets-alt"></div>
+                            <div alt="f526" class="dashicons dashicons-money"></div>
+                            <div alt="f328" class="dashicons dashicons-smiley"></div>
+                            <div alt="f529" class="dashicons dashicons-thumbs-up"></div>
+                            <div alt="f542" class="dashicons dashicons-thumbs-down"></div>
+                            <div alt="f538" class="dashicons dashicons-layout"></div>
+                            <div alt="f546" class="dashicons dashicons-paperclip"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>metody</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>program</li>
+                        <li>online</li>
+                        <li>CLI</li>
+                        <li>wtyczka</li>
+                    </ul>
+                </div>
+                <div class="handout">
+Program: Photoshop, GIMP
+Online:
+CLI: optipng, jpegoptim
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>wtyczka</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>reSmush.it</li>
+                        <li>EWWW Image Optimizer</li>
+                        <li>Compress JPEG & PNG images</li>
+                        <li>ShortPixel Image Optimizer</li>
+                        <li>Smush Image</li>
+                    </ul>
+                </div>
+                <div class="handout">
+reSmush - limit input 5mb
+EWWW - nie wymaga konta, konto dodaje features
+Compress - 100 obrazków miesięcznie free
+ShortPixel
+                </div>
+            </div>
+
+            <div class="slide smush">
+                <h1>Smush Image</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>40 MB</li>
+                        <li>69 TB</li>
+                        <li>86 tysięcy</li>
+                        <li>45 milionów</li>
+                        <li>19 miliardów</li>
+                    </ul>
+                    <p><small>maj 2018</small></p>
+                </div>
+                <div class="handout">
+Processed more than 19, 000,000,000 ( 19 Billion ) images so far, We process upto 45287279 ( 45 Million images in a day ), highest so far :wink:
+86558, 86k sites daily
+And we’ve saved 68,703 GB ( 68K GBs ) of data
+The biggest image we ever had was around 40MB I guess
+That too only once :stuck_out_tongue:
+As per the log at least, can’t be sure on that
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>pytania</h1>
+                <div class="slidecontent questions">
+                    <h2>pytania</h2>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <h1>o mnie</h1>
+                <div class="slidecontent">
+                    <img src="../../common/mp.jpg" class="alignright" />
+                    <ul>
+                        <li>Marcin Pietrzak</li>
+                        <li>WPMU DEV</li>
+                        <li>iworks.pl</li>
+                        <li>marcin@iworks.pl</li>
+                    </ul>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <h1>inne</h1>
+                <div class="slidecontent">
+                    <h2>Bibliografia</h2>
+                    <ul>
+                        <li><a href="https://developer.wordpress.org/resource/dashicons/">Dashicons | WordPress Developer Resources</a></li>
+<li><a href="https://www.wpbeginner.com/plugins/best-wordpress-image-compression-plugins-compared/">5 Best WordPress Image Compression Plugins Compared (2018)</a></li>
+                    </ul>
+                    <h2>Linki</h2>
+                    <ul>
+                        <li><a href="http://iworks.pl/WCPL-2018.html">http://iworks.pl/WCPL-2018.html</a></li>
+                        <li><a href="https://gist.github.com/iworks/9cc577aa445087062f9619e1f385094e">Make images to WordPress</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide license">
+                <h1>Licencja</h1>
+                <div class="slidecontent">
+                    <h2><span property="dc:title dct:title" style="display: inline;">Uznanie autorstwa - Na tych samych warunkach 3.0 Unported</span> (<span property="dc:identifier dct:identifier" style="display: inline;">CC BY-SA 3.0</span>)</h2>
+                    <h3 resource="http://creativecommons.org/ns#Reproduction" rel="cc:permits">Wolno:</h3>
+                    <ul class="license-properties">
+                        <li class="license share" rel="cc:permits" resource="http://creativecommons.org/ns#Distribution">kopiować, rozpowszechniać, odtwarzać i wykonywać utwór</li>
+                        <li class="license remix" rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks">tworzyć utwory zależne </li>
+                        <li class="license commercial">użytkować utwór w sposób komercyjny</li>
+                    </ul>
+                    <h3>Na następujących warunkach:</h3>
+                    <ul dir="ltr" style="text-align: left;" class="license-properties">
+                        <li class="license by" rel="cc:requires" resource="http://creativecommons.org/ns#Attribution"><strong>Uznanie autorstwa</strong> - <span id="attribution-container"> Utwór należy oznaczyć w sposób określony przez Twórcę lub Licencjodawcę</span> </li> 
+                        <li class="license sa" rel="cc:requires" resource="http://creativecommons.org/ns#ShareAlike"><strong>Na tych samych warunkach</strong> - Jeśli zmienia się lub przekształca niniejszy utwór, lub tworzy inny na jego podstawie, można rozpowszechniać powstały w ten sposób nowy utwór tylko na podstawie takiej samej licencji.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1441929-14']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+             })();
+         </script>
+    </body>
+</html>
