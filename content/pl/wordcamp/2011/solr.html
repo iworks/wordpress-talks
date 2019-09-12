@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>SOLR a WordPress – czyli jak szukać, żeby znaleźć</title>
+        <!-- metadata -->
+        <meta name="generator" content="S5" />
+        <meta name="version" content="S5 1.1" />
+        <meta name="presdate" content="20111210" />
+        <meta name="author" content="Marcin Pietrzak" />
+        <meta name="company" content="iworks.pl" />
+        <!-- configuration parameters -->
+        <meta name="defaultView" content="slideshow" />
+        <meta name="controlVis" content="hidden" />
+        <!-- style sheet links -->
+        <link rel="stylesheet" href="../../../../ui/companies/nextwebmedia/slides.css" type="text/css" media="projection" id="slideProj" />
+        <link rel="stylesheet" href="../../../../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+        <link rel="stylesheet" href="../../../../ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+        <!-- embedded styles -->
+        <style type="text/css" media="all">
+            .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
+            #anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
+            #anim img {position: absolute; top: 42px; left: 24px;}
+            img#me01 {top: 0; left: 0;}
+            img#me02 {left: 23px;}
+            img#me04 {top: 44px;}
+            img#me05 {top: 43px;left: 36px;}
+        </style>
+        <!-- S5 JS -->
+        <script src="../../../../ui/default/slides.js" type="text/javascript"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <!--
+        Zaprezentuję działanie serwera indeksującego SOLR oraz
+        przedstawię sposób integracji z WordPress’em. Opowiem
+        o wykorzystaniu w blogach należących do sieci
+        http://blomedia.net/. Prezentację zakończę przedstawieniem
+        krok po kroku sposobu na wyświetlenia podobnych wpisów
+        w oparciu o zapytanie typu MoreLikeThis.
+        -->
+
+        <div class="layout">
+            <div id="controls"><!-- DO NOT EDIT --></div>
+            <div id="currentSlide"><!-- DO NOT EDIT --></div>
+            <div id="header"></div>
+            <div id="footer">
+                <h1>SOLR a WordPress</h1>
+                <h2>WordCamp 2011 Poznań</h2>
+            </div>
+        </div>
+
+        <div class="presentation">
+
+            <div class="slide">
+                <h1>SOLR a WordPress</h1>
+                <h2>czyli jak szukać, żeby znaleźć</h2>
+                <h3>Marcin Pietrzak</h3>
+                <h4><a href="http://nextwebmedia.pl/">NEXTWEBmedia</a></h4>
+            </div>
+
+
+            <div class="slide">
+                <h1>Definicje</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li class="incremental">Wyszukiwanie
+                        <small>to co chce zobaczyć użytkownik, np. "apple"</small>
+                        </li>
+                        <li class="incremental">Indeksowanie
+                        <small>to co musimy zrobić, żeby zobaczył to użytkownik</small>
+                        </li>
+                        <li class="incremental">SOLR
+                        <small>darmowe narzędzie do wyszukiwania o otwartym kodzie</small>
+                        </li>
+                        <li class="incremental">MoreLikeThis
+                        <small>moduł do wyszukiwania dokumentów podobnych</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Czym jest SOLR?</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Samodzielny <b>serwer wyszukiwania</b> napisany w javie</li>
+                        <li><b>REST</b> api</li>
+                        <li>Zaawansowane wyszukiwanie pełnotekstowe</li>
+                        <li>Optymalizacja: obsługa <b>dużego ruchu</b></li>
+                        <li>Wyniki w postaci: <b>XML</b>, JSON</li>
+                        <li>Skalowalność: replikacja</li>
+                        <li>Roszerzalność za pomocą wtyczek</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>SOLR: możliwości</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Zapytania poprzez <b>HTTP GET</b></li>
+                        <li><b>Różne typu pól</b>: tekst, data, pola dynamiczne</li>
+                        <li>Klucze, sortowanie, filtrowanie, faceting</li>
+                        <li><b>Szybka</b>, przyrostowa aktualizacja oraz replikacja </li>
+                        <li>Różne formy wysyłania danych</li>
+                        <li>Indeksowanie dokumentów (<b>PDF</b>, <b>Word</b>...) za pomocą <a href="http://tika.apache.org/">Apache Tika</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>SOLR: uruchamienie</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Wymagania
+                        <ul>
+                            <li>Java 1.6</li>
+                        </ul>
+                        </li>
+                        <li>Konfiguracja: <b>XML</b></li>
+                        <li>Uruchamianie <pre>java -jar start.jar</pre></li>
+                        <li>Import danych <pre>java -jar post.jar *.xml</pre></li>
+                        <li>Rozgrzewania</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>SOLR: konfiguracja</h1>
+                <ul>
+                    <div class="slidecontent">
+                        <li>solrconfig.xml
+                        <small>konfiguracja całego SOLRa</small></li>
+                        <li>schema.xml
+                        <small>definicja używanych pól</small></li>
+                        <li>synonyms.txt
+                        <small>słownik synonimów</small></li>
+                        <li>stopwords.txt
+                        <small>słownik słów wykluczanych z wyszukiwania</small></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>SOLR: zapytania</h1>
+                <div class="slidecontent">
+                    <p>Przykład różnego zapytania o wyraz "video".</p>
+                    <ul>
+                    <li><pre>q=video&amp;fl=name,id</pre> zwróci pola: name, id </li>
+                    <li><pre>q=video&amp;sort=price desc&amp;fl=name,id,price</pre> posortuje wyniki malejąco po polu price</li>
+                    <li><pre>q=video&amp;wt=json</pre> zwracane dane będą w formacie JSON</li>
+                    <li><pre>q=video card&amp;fl=name,id&amp;hl=true&amp;hl.fl=name,features</pre> podświetlanie znalezionj frazy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1><a href="http://wordpress.org/extend/plugins/solr-for-wordpress/">SOLR for WordPress</a></h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Indeksuje wpisy i strony</li>
+                        <li>Uwzględnia cutom fields</li>
+                        <li>Obsługuje wdrożenia MU</li>
+                        <li>Całkowicie zastępuje domyślne wyszukiwanie</li>
+                        <li>Pełna integracja z domyślnym motywem</li>
+                        <li>Wspiera i18n</li>
+                        <li>Wtyczka: <small><a href="http://wordpress.org/extend/plugins/solr-for-wordpress/">http://wordpress.org/extend/plugins/solr-for-wordpress/</a></small></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>solr4wp: instalacja</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Pobrać i rozpakować wtyczkę</li>
+                        <li>Dodać plik schema.xml do instancji SOLR'a</li>
+                        <li>Aktywować</li>
+                        <li>Skonfigurować serwer, port i ścieżkę</li>
+                        <li>Załadować wpisy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide gadzetomania">
+                <h1>gadzetomania.pl</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Dokumenty w serwisie:
+                        <ul>
+                            <li>Wpisów: 31000</li>
+                            <li>Kategorii: 2000</li>
+                            <li>Tagów: 32000</li>
+                            <li>Komentarzy: 110000</li>
+                        </ul>
+                        <li>Statystyki:
+                        <ul>
+                            <li>UU 1 015 000</li>
+                            <li>PV 7 500 000</li>
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Wykorzystanie w Sieci NEXTWEBmedia</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Wyszukiwanie</li>
+                        <li>Proponowanie podobnych</li>
+                        <li><a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/">upPrev</a> - następny</li>
+                        <li>Inne</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1><a href="http://wiki.apache.org/solr/MoreLikeThis">MoreLikeThis</a></h1>
+                <div class="slidecontent">
+                    <ul>
+                    <li>Ładowanie <pre>&lt;requestHandler name="mlt" class="solr.MoreLikeThisHandler"&gt;</pre></li>
+                    <li>Parametry wywołania:
+                    <ul>
+                        <li>mlt - włączamy (true)</li>
+                        <li>mlt.fl - pola porównywane</li>
+                        <li>mlt.count - liczba dokumentów</li>
+                    </ul>
+                    </li>
+                    <li>Więcej: <small><a href="http://wiki.apache.org/solr/MoreLikeThis">http://wiki.apache.org/solr/MoreLikeThis</a></small></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>Podsumowanie</h1>
+            <div class="slidecontent">
+                <ul>
+                    <li><b>SOLR</b> - serwer indeksujący uzywany przy większych wdrożeniach</li>
+                    <li><b>SOLR for WordPress</b> - wtyczka pozwalająca na wyszukiwania informacji za pomocą serwera SOLR</li>
+                    <li><b>MoreLikeThis</b> - moduł dzięki któremu można wyszukać podobne dokumenty</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide license">
+            <h1>Licencja</h1>
+            <div class="slidecontent">
+                <h2><span property="dc:title dct:title" style="display: inline;">Uznanie autorstwa - Na tych samych warunkach 3.0 Unported</span> (<span property="dc:identifier dct:identifier" style="display: inline;">CC BY-SA 3.0</span>)</h2>
+                <h3 resource="http://creativecommons.org/ns#Reproduction" rel="cc:permits">Wolno:</h3>
+                <ul class="license-properties">
+                    <li class="license share" rel="cc:permits" resource="http://creativecommons.org/ns#Distribution">kopiować, rozpowszechniać, odtwarzać i wykonywać utwór</li>
+                    <li class="license remix" rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks">tworzyć utwory zależne </li>
+                    <li class="license commercial">użytkować utwór w sposób komercyjny</li>
+                </ul>
+                <h3>Na następujących warunkach:</h3>
+                <ul dir="ltr" style="text-align: left;" class="license-properties">
+                    <li class="license by" rel="cc:requires" resource="http://creativecommons.org/ns#Attribution"><strong>Uznanie autorstwa</strong> - <span id="attribution-container"> Utwór należy oznaczyć w sposób określony przez Twórcę lub Licencjodawcę</span> </li> 
+                    <li class="license sa" rel="cc:requires" resource="http://creativecommons.org/ns#ShareAlike"><strong>Na tych samych warunkach</strong> - Jeśli zmienia się lub przekształca niniejszy utwór, lub tworzy inny na jego podstawie, można rozpowszechniać powstały w ten sposób nowy utwór tylko na podstawie takiej samej licencji.</li>
+                </ul>
+            </div>
+        </div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1441929-14']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    </body>
+</html>
+

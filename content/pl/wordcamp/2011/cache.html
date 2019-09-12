@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Dopalić WordPress’a – teoretyczne i praktyczne sposoby użycia cachowania</title>
+        <!-- metadata -->
+        <meta name="generator" content="S5" />
+        <meta name="version" content="S5 1.1" />
+        <meta name="presdate" content="20111210" />
+        <meta name="author" content="Marcin Pietrzak" />
+        <meta name="company" content="iworks.pl" />
+        <!-- configuration parameters -->
+        <meta name="defaultView" content="slideshow" />
+        <meta name="controlVis" content="hidden" />
+        <!-- style sheet links -->
+        <link rel="stylesheet" href="../../../../ui/pl/wordcamp/2011/slides.css" type="text/css" media="projection" id="slideProj" />
+        <link rel="stylesheet" href="../../../../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+        <link rel="stylesheet" href="../../../../ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+        <!-- embedded styles -->
+        <style type="text/css" media="all">
+        </style>
+        <!-- S5 JS -->
+        <script src="../../../../ui/default/slides.js" type="text/javascript"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+
+        <div class="layout">
+            <div id="controls"><!-- DO NOT EDIT --></div>
+            <div id="currentSlide"><!-- DO NOT EDIT --></div>
+            <div id="header"></div>
+            <div id="footer">
+                <h1>Dopalić WordPress’a</h1>
+                <h2>WordCamp 2011 Poznań</h2>
+            </div>
+
+        </div>
+        <div class="presentation">
+
+            <div class="slide">
+                <h1>Dopalić WordPress’a</h1>
+                <h2>teoretyczne i praktyczne sposoby użycia cachowania</h2>
+                <h3>Marcin Pietrzak</h3>
+                <h4><a href="http://iworks.pl/">przełam sieć</a></h4>
+                <h4>http://iworks.pl/</h4>
+                <div id="logo"><a href="http://iworks.pl" title="przejdź ma stronę główną">przełam sieć</a></div>
+            </div>
+
+            <div class="slide">
+                <h1>Definicje</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li class="incremental">Cache/buforowanie
+                        <small>przechowywanie na później</small>
+                        <li class="incremental">WP Object Cache
+                        <small>klasa realizujaca przechowywanie</small>
+                        </li>
+                        <li class="incremental">Persistent cache
+                        <small>przechowywanie stałe</small>
+                        </li>
+                        <li class="incremental">Transient cache
+                        <small>przechowywanie tymczasowe</small>
+                        </li>
+                        <li class="incremental">memcache(d)
+                        <small>serwer cacheowania w pamięci, klucz=&gt;wartość</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Po co mi to?</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Poprawa wydajności strony
+                        <small>mniejsze obciążenie serwera www oraz serwera bazy danych</small></li>
+                        <li>Skrócenie się czasu ładowania
+                        <small>krótsze oczekiwanie na wygenerowaną stronę</small></li>
+                        <li>Zwiekszenie czasu wizyty
+                        <small>szybciej strona na ekranie, to większe zadowolenie użytkownika</small></li>
+                        <li>Mniejsze opłaty za serwer</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Kiedy używać?</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Wysoki ruch na stronie
+                        <small>kilka zapytań na sekundę</small>
+                        </li>
+                        <li>Słaby serwer aplikacji</li>
+                        <li>Słaby serwer bazy danych</li>
+                        <li>Efekt wykopu
+                        <small>nagły i niespodziewany wzrost ruchu o kilka rzędów wielkości</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>WP Object Cache</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Klasa przeznaczona do obslugi cachowania</li>
+                        <li>Nie używać bezpośrednio obiektu</li>
+                        <li>Korzystać z wbudowanych funkcji</li>
+                        <li>Domyślne cachowanie nie jest stałe</li>
+                        <li>Konieczność użycia wtyczki do stałego przechowywania</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide">
+                <h1>Dostępne zmienne w funkcjach</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li><code>$key</code> identyfikator cachowanej zawartości (hash)</li>
+                        <li><code>$data</code> zawartość do zachowania</li>
+                        <li><code>$group</code> grupa, używana wtedy gdy wystąpi obawa lub potrzeba powtórzenia $key <em>(opcjonalny)</em></li>
+                        <li><code>$expire</code> czas przechowywania, domyślna wartość to 0 (zero) - przechowuj tak długo jak to możliwe  <em>(opcjonalny)</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Wbudowane funkcje 1/2</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li><code>wp_cache_add( $key, $data, $group, $expire )</code>
+                        dodaje zawartości do <b>istniejącego</b> klucza.</li>
+                        <li><code>wp_cache_set( $key, $data, $group, $expire )</code>
+                        ustawia zawartość, <b>nadpisuje</b> jeżeli istniej</li>
+                        <li><code>wp_cache_get( $key, $group )</code>
+                        pobiera zawartość klucza</li>
+                        <li><code>wp_cache_replace( $key, $data, $group, $expire )</code>
+                        zastępuje zawartość <b>istniejącego</b> klucza</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Wbudowane funkcje 2/2</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li><code>wp_cache_delete( $id, $group )</code>
+                        czyści cache wybranej grupy</li>
+                        <li><code>wp_cache_flush()</code>
+                        czyści całą zawartość cache</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Przykład</h1>
+                <div class="slidecontent">
+                    <p>Najczęstszym przypadkiem użycia cachowania jest zapamiętywanie rezultatu powtarzających sie zapytań do bazy danych</p>
+<pre><code>$result = wp_cache_get( 'my_result' );
+if ( false == $result ) {
+    $result = $wpdb-&gt;get_results( $query );
+    wp_cache_set( 'my_result', $result );
+}
+// niezależnie od sposobu uzyskania danych, obsłuż je normalnie...</code></pre>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Wtyczki realizujące stałe cachowanie</h1>
+                <div class="slidecontent">
+                    <p>Domyślnie cache przechowywany jest <u>tylko przez czas trwania zapytania</u></p>
+                    <ul>
+                        <li><a href="http://wordpress.org/extend/plugins/w3-total-cache/" class="external text" title="http://wordpress.org/extend/plugins/w3-total-cache/">W3 Total Cache</a>
+                        bardzo rozbudowana wtyczka, umożliwia:
+                        <ul>
+                            <li>zapisywanie na dysk, do opcode'u lub memchache'a</li>
+                            <li>korzystanie z CDN</li>
+                            <li>minimalizacja wielkości plików (css, js)</li>
+                            <li>inne...</li>
+                        </ul>
+                        </li>
+                        <li><a href="http://wordpress.org/extend/plugins/wp-file-cache/" class="external text" title="http://wordpress.org/extend/plugins/wp-file-cache/">WP File Cache</a> pozwala na ładowanie danych z dysku zamiast z bazy</li>
+                        <li><a href="http://wordpress.org/extend/plugins/memcached/" class="external text" title="http://wordpress.org/extend/plugins/memcached/">Memcached Object Cache</a>
+                        pozwala na użycie memcache'a, wymaga instalacji rozszerzenia PECL</li>
+                        <li>inne: <a href="http://wordpress.org/extend/plugins/apc/" class="external text" title="http://wordpress.org/extend/plugins/apc/">APC Object Cache</a>, <a href="http://neosmart.net/dl.php?id=14" class="external text" title="http://neosmart.net/dl.php?id=14">File-Based Caching for WordPress</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Transients API</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>Prosta metoda przechowywania danych
+                        <small>brak konieczności używania jakichkolwiek dodatków</small>
+                        </li>
+                        <li>Wykorzystanie mechanizmu podobnego do API opcji
+                        <small>użycie tabeli wp_options</small>
+                        </li>
+                        <li>Przewidywalny czas ważności danych
+                        <small>o nowe wpisy z feeda pytamy co godzinę</small></li>
+                        <li>Przykładowe użycie
+                        <small>standardowy widget RSS</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Transients API: zmienne</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li><code>$transient</code> identyfikator (ograniczenie do 40 znaków)</li>
+                        <li><code>$data</code> zawartość do zachowania</li>
+                        <li><code>$expire</code> liczba sekund po jakich zawartość zostanie usunięta z bazy danych</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Transients API: funkcje</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li><code>set_transient( $transient, $data, $expire )</code>
+                        zapis danych</li>
+                        <li><code>get_transient( $transient )</code> pobranie danych</li>
+                        <li><code>delete_transient( $transient )</code> usunięcie danych</li>
+                        <li><code>set_site_transient()</code> odpowiednik set_transient() dla MU</li>
+                        <li><code>get_site_transient()</code> odpowiednik get_transient() dla MU</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Transients API: przykład</h1>
+                <div class="slidecontent">
+                    <p>Przechowanie danych zapytania:</p>
+<pre><code>// sprawdź czy dane już istnieją i pobierz je
+if ( false ===
+    ( $special_query_results = get_transient( 'special_query_results' ) ) ) {
+    // jeżeli dane nie są dostępne, to wytwórz je
+     $special_query_results = new WP_Query(
+         'cat=5&amp;order=random&amp;tag=tech&amp;post_meta_key=thumbnail'
+    );
+    set_transient(
+        'special_query_results',
+    $special_query_results,
+    12*60*60
+    );
+}
+
+// niezależnie od sposobu uzyskania danych, obsłuż je normalnie...</code></pre>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Varnish</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li><b>Web accelerator</b> <small>cachuje po stronie serwera, wymagana pełna konfiguracja backendu z którym zachowuje kontakt</small></li>
+                        <li><b>Pamięć</b> i <b>dysk</b> <small>sposób przechowywania danych</small></li>
+                        <li><b>Elastyczna konfiguracja</b> za pomocą VCL <small>Varnish Configuration Language</small></li>
+                        <li><b>Load balansing</b> <small>sprawdzanie żywotności backendu</small></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>WordPress Varnish</h1>
+                <div class="slidecontent">
+                    <p>Wtyczka umożliwia sterowanie varnishem</p>
+                    <ul>
+                        <li>Cache jest kasowany po dodaniu wpisu</li>
+                        <li>Cache jest kasowany po modyfikacji wpisu</li>
+                        <li>wtyczka: <a href="http://wordpress.org/extend/plugins/wordpress-varnish/">http://wordpress.org/extend/plugins/wordpress-varnish/</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Squid</h1>
+                <div class="slidecontent">
+                    <p>Proxy cache serwer</p>
+                    <ul>
+                        <li>Nie wymaga definicji backendów</li>
+                        <li>Nie sprawdza czy żyją</li>
+                        <li>Nie da się nim tak łatwo sterować</li>
+                        <li>Proste użycie</li>
+                        <li>Dobre cachowanie</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Podsumowanie</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li><b>Transient Cache</b> <small>cache tymczasowy</small></li>
+                        <li><b>Persistent Cache</b> <small>cache stały, <strong>po zainstalowaniu wtyczek</strong></small></li>
+                        <li><b>memcache</b> <small>dedykowany serwer przechowujący dane w pamięci</small></li>
+                        <li>Wtyczki: <b>W3 Total Cache</b>, <b>Memcached Object Cache</b></li>
+                        <li><b>Varnish</b> <small>proxy cache serwer</small></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Bibliografia</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li><a href="http://codex.wordpress.org/Class_Reference/WP_Object_Cache">http://codex.wordpress.org/Class_Reference/WP_Object_Cache</a></li>
+                        <li><a href="http://codex.wordpress.org/Transients_API">http://codex.wordpress.org/Transients_API</a></li>
+                        <li><a href="http://www.varnish-cache.org/">http://www.varnish-cache.org/</a></li>
+                        <li><a href="http://wordpress.org/extend/plugins/w3-total-cache/">http://wordpress.org/extend/plugins/w3-total-cache/</a></li>
+                        <li><a href="http://wordpress.org/extend/plugins/memcached/">http://wordpress.org/extend/plugins/memcached/</a></li>
+                        <li><a href="http://wordpress.org/extend/plugins/wp-file-cache/">http://wordpress.org/extend/plugins/wp-file-cache/</a></li>
+                        <li><a href="http://www.squid-cache.org">http://www.squid-cache.org</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide license">
+                <h1>Licencja</h1>
+                <div class="slidecontent">
+                    <h2><span property="dc:title dct:title" style="display: inline;">Uznanie autorstwa - Na tych samych warunkach 3.0 Unported</span> (<span property="dc:identifier dct:identifier" style="display: inline;">CC BY-SA 3.0</span>)</h2>
+                    <h3 resource="http://creativecommons.org/ns#Reproduction" rel="cc:permits">Wolno:</h3>
+                    <ul class="license-properties">
+                        <li class="license share" rel="cc:permits" resource="http://creativecommons.org/ns#Distribution">kopiować, rozpowszechniać, odtwarzać i wykonywać utwór</li>
+                        <li class="license remix" rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks">tworzyć utwory zależne </li>
+                        <li class="license commercial">użytkować utwór w sposób komercyjny</li>
+                    </ul>
+                    <h3>Na następujących warunkach:</h3>
+                    <ul dir="ltr" style="text-align: left;" class="license-properties">
+                        <li class="license by" rel="cc:requires" resource="http://creativecommons.org/ns#Attribution"><strong>Uznanie autorstwa</strong> - <span id="attribution-container"> Utwór należy oznaczyć w sposób określony przez Twórcę lub Licencjodawcę</span> </li>
+                        <li class="license sa" rel="cc:requires" resource="http://creativecommons.org/ns#ShareAlike"><strong>Na tych samych warunkach</strong> - Jeśli zmienia się lub przekształca niniejszy utwór, lub tworzy inny na jego podstawie, można rozpowszechniać powstały w ten sposób nowy utwór tylko na podstawie takiej samej licencji.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1441929-14']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+    </body>
+</html>
