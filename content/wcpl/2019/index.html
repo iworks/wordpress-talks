@@ -1,16 +1,366 @@
-<div style="display:flex">
-<img src="g06.svg"/>
-<img src="g10.svg"/>
-<img src="g13.svg"/>
-<img src="g19.svg"/>
-<img src="g26.svg"/>
-<img src="g56.svg"/>
-<img src="g74.svg"/>
-<img src="g84.svg"/>
-<img src="g87.svg"/>
-<img src="g88.svg"/>
-<img src="g97.svg"/>
-<img src="g98.svg"/>
-<img src="g99.svg"/>
-<img src="g00.svg"/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <title>Czego (nie) umie motyw typu Multi-Purpose?</title>
+        <!-- metadata -->
+        <meta name="generator" content="S5" />
+        <meta name="version" content="S5 1.1" />
+        <meta name="presdate" content="20191122" />
+        <meta name="author" content="" />
+        <meta name="company" content="" />
+        <!-- configuration parameters -->
+        <meta name="defaultView" content="slideshow" />
+        <meta name="controlVis" content="hidden" />
+        <!-- style sheet links -->
+        <link rel="stylesheet" href="../../../ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+        <link rel="stylesheet" href="../../../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+        <link rel="stylesheet" href="../../../ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+        <link rel="stylesheet" href="../../../ui/default/opera.css" type="text/css" media="projection" />
+        <link rel="stylesheet" href="../../../ui/wordcamp/polska/2019/styles.css" type="text/css" />
+        <!-- S5 JS -->
+        <script src="../../../ui/default/slides.js" type="text/javascript"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- Google Font: Lato -->
+        <link href="../../../fonts/lato/lato.css" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <div class="layout">
+            <div id="controls"><!-- DO NOT EDIT --></div>
+            <div id="currentSlide"><!-- DO NOT EDIT --></div>
+            <div id="header"></div>
+            <div id="footer">
+                <h1>WordCamp 2019 Polska</h1>
+                <h2>Czego (nie) umie motyw typu Multi-Purpose?</h2>
+            </div>
+
+        </div>
+
+        <div class="presentation">
+
+            <div class="slide main-page">
+                <h1>Czego (nie) umie motyw typu Multi-Purpose?</h1>
+                <h3>Marcin Pietrzak</h3>
+                <h4><a href="https://www.opi.org.pl/">OPI PBI</a></h4>
+            </div>
+
+            <div class="slide">
+                <h1>o mnie</h1>
+                <div class="slidecontent">
+                    <img src="../../common/mp.jpg" class="alignright" alt="Marcin Pietrzak" />
+                    <ul>
+                        <li>Marcin Pietrzak</li>
+                        <li>OPI PBI</li>
+                        <li>iworks.pl</li>
+                        <li>marcin@iworks.pl</li>
+                    </ul>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>cel prezentacji</h1>
+                    <ul>
+                        <li>definicje</li>
+                        <li>stan</li>
+                        <li>zmiany</li>
+                        <li>wynik</li>
+                    </ul>
+                </div>
+                <div class="handout">
+strona
+zapytania
+memcached
+WP Rocket
+- asynchroniczne ładowanie plików krojów pisma
+- eliminacja 2 krojów (były wykorzystywane w pojedynczych miejscach)
+- eliminacja podwójnego ładowanie font awesome, a finalnie wyciągnięcie pojedynczych glifów i wyłączenie całego pliku
+- redukcja zaciąganych krojów pisma, dotyczy wagi i italica - analiza wykorzystania, redukcja o nie używane
+- wykorzystanie WP Object Cache - redukcja zapytań do bazy danych
+- wyłączenie!!! wtyczki `WP Rocket`
+- redukcja zapytań
+- agresywna redukcja zapytań
+
+Marcin Pietrzak, Wed Jun 12 08:14:52 2019 +0200 : Added reSmush.it Image Optimizer plugin. https://wordpress.org/plugins/resmushit-image-optimizer/
+Marcin Pietrzak, Tue Jun 18 10:21:48 2019 +0200 : Add check for memcached functions.
+Marcin Pietrzak, Wed Jun 19 15:14:51 2019 +0200 : Replace "Custom Field Suite" plugin by our own code. Pozbyć się wtyczki "Custom Field Suite" https://app.asana.com/0/1114325403294950/1127698978682971
+Marcin Pietrzak, Mon Jun 24 14:41:45 2019 +0200 : Eliminacja API twittera - zastąpić stringiem https://app.asana.com/0/1114325403294950/1128263744376059 Eliminacja API FB - zastąpić stringiem https://app.asana.com/0/1114325403294950/1128263744376060
+Marcin Pietrzak, Mon Jun 24 16:32:52 2019 +0200 : * Removed emoji in head CSS. * Removed from HEAD comments feed link.
+Marcin Pietrzak, Mon Jun 24 16:44:53 2019 +0200 : Removed from HEAD section few unneeded lines.
+Marcin Pietrzak, Mon Jul 22 12:26:05 2019 +0200 : Removed "Media Library Folders for WordPress" plugin.
+Marcin Pietrzak, Fri Aug 9 09:22:58 2019 +0200 : ajax loda for bottom sections on main page
+Marcin Pietrzak, Mon Aug 12 08:04:31 2019 +0200 : Wtyczka re-captcha - ograniczyć do logowania https://app.asana.com/0/1114325403294950/1126913042062918
+Marcin Pietrzak, Mon Aug 12 08:25:07 2019 +0200 : deregister 'atomic blocks' scripts
+Marcin Pietrzak, Mon Aug 12 08:29:12 2019 +0200 : moved pojo css into theme css
+Marcin Pietrzak, Mon Aug 12 16:40:26 2019 +0200 : improvements for lazy load
+Marcin Pietrzak, Mon Aug 12 14:24:03 2019 +0200 : prepare v0.4.9
+Marcin Pietrzak, Mon Aug 12 14:23:12 2019 +0200 : add action to generate thumbs
+Marcin Pietrzak, Mon Aug 19 09:53:02 2019 +0200 : - Moved Google Analitics into script to asynchronous load. - Moved Facebook Pixel into script to asynchronous load.
+Marcin Pietrzak, Thu Aug 22 09:38:48 2019 +0200 : use cache for shortcodes
+Marcin Pietrzak, Wed Jun 12 11:18:24 2019 +0200 : Remove plugin "User Profile Picture" https://app.asana.com/0/1114325403294950/1126749056920829
 </div>
+            </div>
+
+            <!-- 2019-05-25 -->
+            <div class="slide">
+                <h1>stan początkowy</h1>
+                <div class="slidecontent">
+                    <div class="flex fit aligncenter">
+                        <img src="./g06.svg" />
+                        <img src="./g13.svg" />
+                    </div>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                <div class="score">
+                    <div class="flex small">
+                        <img src="./g06.svg" />
+                        <img src="./g13.svg" />
+                    </div>
+                    <div class="lh-scorescale"><span class="lh-scorescale-range lh-scorescale-range--fail">0–49</span><span class="lh-scorescale-range lh-scorescale-range--average">50–89</span><span class="lh-scorescale-range lh-scorescale-range--pass">90–100</span></div>
+                </div>
+                    <ul>
+                        <li>motyw: Salient</li>
+                        <li>zasoby:
+                            <ul>
+                                <li>CSS: 15</li>
+                                <li>JS: 28</li>
+                                <li>obrazki: ponad 60</li>
+                            </ul>
+                        </li>
+                        <li>DOM: 1100</li>
+                        <li>SQL: 246</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    Theme Name: Salient
+                    Theme URI: http://www.themenectar.com
+                    Author: ThemeNectar
+                    Author URI: https://themeforest.net/user/themenectar
+                    Description: An Ultra Responsive Multi-Purpose Theme.
+                    Version: 9.0.2
+                    Text Domain: salient
+                    License: GNU General Public License version 3.0
+                    License URI: http://www.gnu.org/licenses/gpl-3.0.html
+                </div>
+            </div>
+
+            <!-- 2019-06-12 -->
+            <div class="slide">
+                <div class="slidecontent">
+                    <div class="score">
+                        <div class="flex small">
+                            <img src="./g10.svg" />
+                            <img src="./g19.svg" />
+                        </div>
+                        <div class="lh-scorescale"><span class="lh-scorescale-range lh-scorescale-range--fail">0–49</span><span class="lh-scorescale-range lh-scorescale-range--average">50–89</span><span class="lh-scorescale-range lh-scorescale-range--pass">90–100</span></div>
+                    </div>
+                    <ul>
+                        <li>memcached</li>
+                        <li>reSmush.it</li>
+                        <li>awesome</li>
+                        <li>ikony</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    awesome - dwa razy, a i tak usuniętę i zastąpione glifami
+                    ikony - inline albo base64 w CSS
+                </div>
+            </div>
+
+            <!-- 2019-08-06 -->
+            <div class="slide">
+                <div class="slidecontent">
+                    <div class="score">
+                        <div class="flex small">
+                            <img src="./g19.svg" />
+                            <img src="./g49.svg" />
+                        </div>
+                        <div class="lh-scorescale"><span class="lh-scorescale-range lh-scorescale-range--fail">0–49</span><span class="lh-scorescale-range lh-scorescale-range--average">50–89</span><span class="lh-scorescale-range lh-scorescale-range--pass">90–100</span></div>
+                    </div>
+                    <ul>
+                        <li>pokaz slajdów</li>
+                        <li>social media</li>
+                        <li>Custom Field Suite</li>
+                        <li>Google Fonts</li>
+                        <li>&lt;head&gt;</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    slider - optymalizacja WP Query
+                    social media - zastąpienie plików JS/CSS/img odpowiednimi snippetami
+                    Google Fonts - asynchroniczne ładowanie
+                </div>
+            </div>
+
+            <!-- 2019-08-07 -->
+            <div class="slide">
+                <div class="slidecontent">
+                    <div class="score">
+                        <div class="flex small">
+                            <img src="./g56.svg" />
+                            <img src="./g87.svg" />
+                        </div>
+                        <div class="lh-scorescale"><span class="lh-scorescale-range lh-scorescale-range--fail">0–49</span><span class="lh-scorescale-range lh-scorescale-range--average">50–89</span><span class="lh-scorescale-range lh-scorescale-range--pass">90–100</span></div>
+                    </div>
+                    <ul>
+                        <li>motyw</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <!-- 2019-09-01 -->
+            <div class="slide">
+                <div class="slidecontent">
+                    <div class="score">
+                        <div class="flex small">
+                            <img src="./g88.svg" />
+                            <img src="./g00.svg" />
+                        </div>
+                        <div class="lh-scorescale"><span class="lh-scorescale-range lh-scorescale-range--fail">0–49</span><span class="lh-scorescale-range lh-scorescale-range--average">50–89</span><span class="lh-scorescale-range lh-scorescale-range--pass">90–100</span></div>
+                    </div>
+                    <ul>
+                        <li>leniwe ładowanie obrazków</li>
+                        <li>leniwe ładowanie sekcji</li>
+                        <li>konsolidacja CSS</li>
+                        <li>konsolidacja JS</li>
+                        <li>cache</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>stan końcowy</h1>
+                <div class="slidecontent">
+                    <div class="score">
+                        <div class="flex small">
+                            <img src="./g88.svg" />
+                            <img src="./g00.svg" />
+                        </div>
+                        <div class="lh-scorescale"><span class="lh-scorescale-range lh-scorescale-range--fail">0–49</span><span class="lh-scorescale-range lh-scorescale-range--average">50–89</span><span class="lh-scorescale-range lh-scorescale-range--pass">90–100</span></div>
+                    </div>
+                    <ul>
+                        <li>zasoby:
+                            <ul>
+                                <li>CSS: 1</li>
+                                <li>JS: 3</li>
+                                <li>obrazki: 9 <small>+ lazy load</small></li>
+                            </ul>
+                        </li>
+                        <li>DOM: 660</li>
+                        <li>SQL: 6 <small>(165)</small></li>
+                    </ul>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <h1>porównanie</h1>
+                <div class="slidecontent">
+                    <table>
+                        <tr>
+                            <td>CSS</td>
+                            <td class="aligncenter">15</td>
+                            <td class="aligncenter">1</td>
+                        </tr>
+                        <tr>
+                            <td>JS</td>
+                            <td class="aligncenter">28</td>
+                            <td class="aligncenter">3</td>
+                        </tr>
+                        <tr>
+                            <td>DOM</td>
+                            <td class="aligncenter">1100</td>
+                            <td class="aligncenter">660</td>
+                        </tr>
+                        <tr>
+                            <td>SQL</td>
+                            <td class="aligncenter">246</td>
+                            <td class="aligncenter">6</td>
+                        </tr>
+                        <tr>
+                            <td>wynik</td>
+                            <td class="aligncenter">
+                                <div class="flex small">
+                                    <img src="./g10.svg" />
+                                    <img src="./g26.svg" />
+                                </div>
+                            </td>
+                            <td class="aligncenter">
+                                <div class="flex small">
+                                    <img src="./g88.svg" />
+                                    <img src="./g00.svg" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <h1>stan końcowy</h1>
+                <div class="slidecontent">
+                    <div class="flex fit aligncenter">
+                        <img src="./g88.svg" />
+                        <img src="./g00.svg" />
+                    </div>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <h1>o mnie</h1>
+                <div class="slidecontent">
+                    <img src="../../common/mp.jpg" class="alignright" alt="Marcin Pietrzak" />
+                    <ul>
+                        <li>Marcin Pietrzak</li>
+                        <li>OPI PBI</li>
+                        <li>iworks.pl</li>
+                        <li>marcin@iworks.pl</li>
+                    </ul>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide license">
+                <h1>Licencja</h1>
+                <div class="slidecontent">
+                    <h2><span property="dc:title dct:title" style="display: inline;">Uznanie autorstwa - Na tych samych warunkach 3.0 Unported</span> (<span property="dc:identifier dct:identifier" style="display: inline;">CC BY-SA 3.0</span>)</h2>
+                    <h3 resource="http://creativecommons.org/ns#Reproduction" rel="cc:permits">Wolno:</h3>
+                    <ul class="license-properties">
+                        <li class="license share" rel="cc:permits" resource="http://creativecommons.org/ns#Distribution">kopiować, rozpowszechniać, odtwarzać i wykonywać utwór</li>
+                        <li class="license remix" rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks">tworzyć utwory zależne </li>
+                        <li class="license commercial">użytkować utwór w sposób komercyjny</li>
+                    </ul>
+                    <h3>Na następujących warunkach:</h3>
+                    <ul dir="ltr" style="text-align: left;" class="license-properties">
+                        <li class="license by" rel="cc:requires" resource="http://creativecommons.org/ns#Attribution"><strong>Uznanie autorstwa</strong> - <span id="attribution-container"> Utwór należy oznaczyć w sposób określony przez Twórcę lub Licencjodawcę</span> </li> 
+                        <li class="license sa" rel="cc:requires" resource="http://creativecommons.org/ns#ShareAlike"><strong>Na tych samych warunkach</strong> - Jeśli zmienia się lub przekształca niniejszy utwór, lub tworzy inny na jego podstawie, można rozpowszechniać powstały w ten sposób nowy utwór tylko na podstawie takiej samej licencji.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1441929-14']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+             })();
+         </script>
+    </body>
+</html>
