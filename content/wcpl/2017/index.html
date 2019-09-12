@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <title>Być Wtyczką, czy nie być Wtyczką?</title>
+        <!-- metadata -->
+        <meta name="generator" content="S5" />
+        <meta name="version" content="S5 1.1" />
+        <meta name="presdate" content="20170604" />
+        <meta name="author" content="" />
+        <meta name="company" content="" />
+        <!-- configuration parameters -->
+        <meta name="defaultView" content="slideshow" />
+        <meta name="controlVis" content="hidden" />
+        <!-- style sheet links -->
+        <link rel="stylesheet" href="../../../ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+        <link rel="stylesheet" href="../../../ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+        <link rel="stylesheet" href="../../../ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+        <link rel="stylesheet" href="../../../ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+        <link rel="stylesheet" href="../../../ui/wordcamp/polska/2017/styles.css" type="text/css" />
+        <!-- S5 JS -->
+        <script src="../../../ui/default/slides.js" type="text/javascript"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- Google Font: Lato -->
+        <link href="../../../fonts/lato/lato.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="../../../ui/wordcamp/polska/2017/images/logo.png"/>
+    </head>
+    <body>
+
+        <div class="layout">
+            <div id="controls"><!-- DO NOT EDIT --></div>
+            <div id="currentSlide"><!-- DO NOT EDIT --></div>
+            <div id="header"></div>
+            <div id="footer">
+                <h1>WordCamp 2017 Polska</h1>
+                <h2>Być Wtyczką, czy nie być Wtyczką?</h2>
+            </div>
+
+        </div>
+
+
+        <div class="presentation">
+            <div class="slide main-page">
+                <h1>Być Wtyczką, czy nie być Wtyczką?</h1>
+                <h3>Marcin Pietrzak</h3>
+                <h4><a href="https://premium.wpmudev.org">WPMU DEV</a></h4>
+            </div>
+--
+            <div class="slide">
+                <h1>o mnie</h1>
+                <div class="slidecontent">
+                    <img src="./18527919_1677543152542220_4693359073383223596_n.png" class="alignright" />
+                    <ul>
+                        <li>Marcin Pietrzak</li>
+                        <li>WPMU DEV</li>
+                        <li>iworks.pl</li>
+                        <li>marcin@iworks.pl</li>
+                    </ul>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>cel prezentacji</h1>
+                    <ul>
+                        <li>definicja</li>
+                        <li>WordPress</li>
+                        <li>kod</li>
+                        <li>wtyczka</li>
+                    </ul>
+                </div>
+                <div class="handout"></div>
+            </div>
+
+            <div class="slide">
+                <h1>definicja</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>co to jest</li>
+                        <li>użycie</li>
+                        <li>inne</li>
+                        <li>baza danych</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    <dl>
+                        <dt>inne</dt>
+                        <dd>Metadata API</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>co to jest?</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>klucz =&gt; wartość</li>
+                        <li>pojedyńcze</li>
+                        <li>wielokrotne</li>
+                        <li>brak typu</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>gdzie można użyć</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>wbudowany typ treści</li>
+                        <li>własny typ treści</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>gdzie można użyć</h2>
+                <div class="slidecontent">
+                    <ul>
+                        <li>taksonomia</li>
+                        <li>komentarz</li>
+                        <li>użytkownik</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>baza danych - tablice</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>wp_postmeta</li>
+                        <li>wp_termmeta</li>
+                        <li>wp_commentmeta</li>
+                        <li>wp_usermeta</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>baza danych - struktura</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>identyfikator</li>
+                        <li>obiekt</li>
+                        <li>klucz</li>
+                        <li>wartość</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>treść</h2>
+                <div class="slidecontent">
+                    <ul>
+                        <li>wbudowany typ treści</li>
+                        <li>własny typ treści</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>WordPress</h1>
+                <div class="slidecontent image">
+                    <img src="./generic/add-custom-field.png" />
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>kod (wpisy)</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>add_post_meta()</li>
+                        <li>update_post_meta()</li>
+                        <li>delete_post_meta()</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>kod (wpisy)</h1>
+                <div class="slidecontent">
+                    <ul>
+						<li>get_post_custom()</li>
+						<li>get_post_custom_values()</li>
+						<li>get_post_custom_keys()</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>kod (wpisy)</h1>
+                <div class="slidecontent">
+					<p>Template tags</p>
+                    <ul>
+                        <li>the_meta()</li>
+                        <li>get_post_meta()</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>kod (dokumentacja)</h1>
+                <div class="slidecontent image">
+					<p>https://codex.wordpress.org/Metadata_API</p>
+                    <img src="./generic/metadata_api.png" />
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>kod (inne)</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>add_term_meta(), update_term_meta(), delete_term_meta(), get_term_meta()</li>
+                        <li>add_comment_meta(), update_comment_meta(), delete_comment_meta(), get_comment_meta()</li>
+                        <li>add_user_meta(), update_user_meta(), delete_user_meta(), get_user_meta()</li>
+                    </ul>
+                </div>
+            </div>
+>
+            <div class="slide">
+                <h1>wtyczki</h1>
+                <div class="slidecontent">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>nazwa</th>
+                                <th>wielkość</th>
+                                <th><span class="stars">&#9733;</span></th>
+                                <th>instalacje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://pl.wordpress.org/plugins/advanced-custom-fields/">Advanced Custom Fields</a></td>
+                                <td>1200K</td>
+                                <td>5<span class="stars">&#9733;</span> (961)</td>
+                                <td>1m+</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://pl.wordpress.org/plugins/cmb2/">CMB2</a></td>
+                                <td>800K</td>
+                                <td>5<span class="stars">&#9733;</span> (57)</td>
+                                <td>100k+</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://pl.wordpress.org/plugins/custom-field-suite/">Custom Field Suite</a></td>
+                                <td>290K</td>
+                                <td>5<span class="stars">&#9733;</span> (117)</td>
+                                <td>30k+</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://pl.wordpress.org/plugins/pods/">Pods</a></td>
+                                <td>1300K</td>
+                                <td>5<span class="stars">&#9733;</span> (164)</td>
+                                <td>40k+</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://pl.wordpress.org/plugins/simple-fields/">Simple Fields</a></td>
+                                <td>500K</td>
+                                <td>5<span class="stars">&#9733;</span> (41)</td>
+                                <td>10k+</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://pl.wordpress.org/plugins/types/">Toolset Types</a></td>
+                                <td> 8200K</td>
+                                <td><span class="stars">&#9733;</span> 4.5 (208)</td>
+                                <td>200k+</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">"custom fileds" =&gt; 380 wtyczek</td>
+                            </tr>
+                            <tfoot>
+                    </table>
+                <div class="handout">
+ACF - pro: repeater, gallery, more options
+CMB2 - form builder too, a lot of extra plugins to plugin
+Custom Fields Suite - lightweiht
+Pods - post types too
+Simple Fields - repeater, abadoned
+Toolset Types - part of suit, post types, 
+                </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>co wybrać - podsumowanie - kod</h1>
+                <div class="slidecontent">
+                    <p>zalety</p>
+                    <ul>
+                        <li>lekkość</li>
+                        <li>dopasowanie</li>
+                    </ul>
+                    <p>wady</p>
+                    <ul>
+                        <li>programista</li>
+                        <li>interface</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>co wybrać - podsumowanie - wtyczka</h1>
+                <div class="slidecontent">
+                    <p>zalety</p>
+                    <ul>
+                        <li>łatwość użycia</li>
+                        <li>integracja</li>
+                    </ul>
+                    <p>wady</p>
+                    <ul>
+                        <li>waga</li>
+                        <li>ograniczenia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>WP_Meta_Query</h1>
+                <div class="slidecontent image">
+                    <p>https://codex.wordpress.org/Class_Reference/WP_Meta_Query</p>
+                    <img src="./generic/wp_meta_query.png" />
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>ciekawostka</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li>wp_options</li>
+                        <li>wp_site_options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>Bibliografia</h1>
+                <div class="slidecontent">
+                    <ul>
+                        <li><a href="https://codex.wordpress.org/Metadata_API">Metadata API</a></li>
+                        <li><a href="https://codex.wordpress.org/Class_Reference/WP_Meta_Query">Class Reference/WP Meta Query</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide license">
+                <h1>Licencja</h1>
+                <div class="slidecontent">
+                    <h2><span property="dc:title dct:title" style="display: inline;">Uznanie autorstwa - Na tych samych warunkach 3.0 Unported</span> (<span property="dc:identifier dct:identifier" style="display: inline;">CC BY-SA 3.0</span>)</h2>
+                    <h3 resource="http://creativecommons.org/ns#Reproduction" rel="cc:permits">Wolno:</h3>
+                    <ul class="license-properties">
+                        <li class="license share" rel="cc:permits" resource="http://creativecommons.org/ns#Distribution">kopiować, rozpowszechniać, odtwarzać i wykonywać utwór</li>
+                        <li class="license remix" rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks">tworzyć utwory zależne </li>
+                        <li class="license commercial">użytkować utwór w sposób komercyjny</li>
+                    </ul>
+                    <h3>Na następujących warunkach:</h3>
+                    <ul dir="ltr" style="text-align: left;" class="license-properties">
+                        <li class="license by" rel="cc:requires" resource="http://creativecommons.org/ns#Attribution"><strong>Uznanie autorstwa</strong> - <span id="attribution-container"> Utwór należy oznaczyć w sposób określony przez Twórcę lub Licencjodawcę</span> </li> 
+                        <li class="license sa" rel="cc:requires" resource="http://creativecommons.org/ns#ShareAlike"><strong>Na tych samych warunkach</strong> - Jeśli zmienia się lub przekształca niniejszy utwór, lub tworzy inny na jego podstawie, można rozpowszechniać powstały w ten sposób nowy utwór tylko na podstawie takiej samej licencji.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h1>o mnie</h1>
+                <div class="slidecontent">
+                    <img src="./18527919_1677543152542220_4693359073383223596_n.png" class="alignright" />
+                    <ul>
+                        <li>Marcin Pietrzak</li>
+                        <li>WPMU DEV</li>
+                        <li>iworks.pl</li>
+                        <li>marcin@iworks.pl</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1441929-14']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+             })();
+         </script>
+    </body>
+</html>

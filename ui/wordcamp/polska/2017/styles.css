@@ -1,0 +1,144 @@
+@media screen {
+    body {
+        background-image: none;
+        font-family: 'Lato', sans-serif;
+    }
+
+    div#header
+    ,div#footer
+    ,.slide h1
+    ,#controls #navLinks a
+    {
+        background-color: #4f504f;
+    }
+
+    div#header {
+        height: 5em;
+        background: #fff url(images/cover.jpg) no-repeat 0 100%;
+        border-bottom: 4px solid #e43;
+        background-position: bottom;
+        background-size: 100%;
+    }
+    div#header::after {
+        content: "";
+        background: transparent url(images/cropped-wclublin-1.png) no-repeat 0 50%;
+        background-size: contain;
+        top: 10px;
+        left: 30px;
+        bottom: 10px;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+
+    }
+
+    .controls {
+        color: #fff;
+    }
+    div#footer,
+    div#currentSlide {
+        color: #000;
+    }
+
+    div#footer {
+        border-top: 4px solid #e43;
+    }
+    div#footer::after {
+        content: "";
+        background: url(images/cover.jpg);
+        background-position: bottom;
+        background-size: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: .3;
+    }
+    div#footer h1,
+    div#footer h2 {
+        opacity: .8;
+    }
+
+    .main-page.slide h1
+    {
+        border: 0;
+    }
+
+    .main-page.slide h4 {
+        background: transparent url(images/wpmudev.png) no-repeat;
+        width: 201px;
+        height: 49px;
+        text-indent: -999em;
+        overflow: hidden;
+        background-size: cover;
+    }
+
+    .slide h1
+    {
+        text-transform: none;
+        padding: .5em;
+        border: 1px solid #e43;
+        background-color: #fff;
+        right: 100px;
+        left: auto;
+        color: #145;
+    }
+
+    .slide a {
+        color: #000;
+    }
+
+    .slide .stars {
+        color: #ffb900;
+        text-shadow: 0px 0px 5px rgba(150, 150, 150, 1);
+    }
+
+    .slide
+    ,#slide0
+    {
+        padding-top: 5.5em;
+    }
+
+    .slide.license ul
+    {
+        font-size: .5em;
+    }
+
+    img.alignright {
+        float: right;
+    }
+
+    #currentSlide {
+
+    }
+
+    .slide .image img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        border: 1px solid #f98;
+        padding: 10px;
+    }
+
+    .slide table {
+        border-collapse: collapse;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .slide tr td:first-of-type {
+        text-align: left;
+    }
+
+    .slide td {
+        text-align: right;
+    }
+
+    .slide td,
+    .slide th {
+        border: 1px solid #ddd;
+        padding: 3px 10px;
+    }
+}
