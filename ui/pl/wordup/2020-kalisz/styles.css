@@ -15,14 +15,14 @@
     div#header {
         height: 5em;
         background: #fff url(images/hero-large.jpg) no-repeat 0 100%;
-        border-bottom: 4px solid #ef233c;
+        border-bottom: 5px solid #006f98;
         background-position: bottom;
-        background-size: 100%;
+        background-size: cover;
         position: relative;
     }
 
     div#header:before {
-        background-image: linear-gradient(171.18deg,rgba(14,19,68,.7),#0e1344 90.96%);
+        background-image: linear-gradient(171.18deg,rgba(14,19,68,.1),#0e1344 90.96%);
         background-color: transparent;
         position: absolute;
         top: 0;
@@ -36,12 +36,12 @@
 
     div#header::after {
         content: "";
-        background: transparent url(images/wclodz-logo-invert.png) no-repeat 30px 50%;
-        background-size: 20vh;
+        background: transparent url(images/logo.png) no-repeat 30px 50%;
+        background-size: 32vh;
         right: 0;
-        top: 10px;
+        top: 0;
         left: 0;
-        bottom: 10px;
+        bottom: 0;
         position: absolute;
         z-index: -1;
 
@@ -56,7 +56,7 @@
     }
 
     div#footer {
-        border-top: 4px solid #ef233c;
+        border-top: 4px solid #006f98;
         color: #bbb;
     }
     div#footer::after {
@@ -94,7 +94,7 @@
     {
         text-transform: none;
         padding: .5em;
-        border: 1px solid #ef233c;
+        border: 1px solid #006f98;
         background-color: #fff;
         right: 100px;
         left: auto;
