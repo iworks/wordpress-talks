@@ -39,9 +39,9 @@
         </div>
 
         <div class="presentation">
-
             <div class="slide main-page">
                 <h1>Nowinki wersji 6.5 dla programisty</h1>
+                <img src="Release-Edition-Inline-Image.png" class="alignright" alt="WordPress 6.5 Regina" />
                 <h3>Marcin Pietrzak</h3>
                 <ul>
                     <li class="logo-company logo-opi"><a href="https://www.opi.org.pl/">OPI PIB</a></li>
@@ -50,8 +50,8 @@
             </div>
 
             <div class="slide">
-                <h1>o mnie</h1>
                 <div class="slidecontent">
+                    <h1>o mnie</h1>
                     <img src="../../../common/mp.jpg" class="alignright" alt="Marcin Pietrzak" />
                     <ul>
                         <li>Marcin Pietrzak</li>
@@ -66,25 +66,121 @@
             <div class="slide">
                 <div class="slidecontent">
                     <h1>cel prezentacji</h1>
+                    <img src="Release-Edition-Inline-Image.png" class="alignright" alt="WordPress 6.5 Regina" />
                     <ul>
                         <li>co nowego</li>
-                        <li>w WordPressie</li>
-                        <li><strong>6.5</strong></li>
+                        <li>WordPress</li>
+                        <li><strong>6.5</strong> <q>Regina</q></li>
                     </ul>
                 </div>
                 <div class="handout"> </div>
             </div>
 
             <div class="slide">
-                <h1>media</h1>
                 <div class="slidecontent">
+                    <h1>zależności wtyczki</h1>
+                    <ul>
+                        <li>Requires Plugins</li>
+                        <li>wp_plugin_dependencies_slug</li>
+                        <li>instalowanie</li>
+                        <li>WP_Plugin_Dependencies</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    Introducing Plugin Dependencies in WordPress 6.5
+                    https://make.wordpress.org/core/2024/03/05/introducing-plugin-dependencies-in-wordpress-6-5/
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>media</h1>
                     <ul>
                         <li>SVG</li>
+                        <li>wp_mime_type_icon</li>
+                        <li>AVIF</li>
+                        <li>image_editor_output_format</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    WordPress 6.5 adds AVIF support
+                    https://make.wordpress.org/core/2024/02/23/wordpress-6-5-adds-avif-support/
+
+                    Q: Can WordPress create AVIF images when I upload JPEGs?
+
+Yes. Developers can use the image_editor_output_format filter to specify this type of transformation for uploads. Here is an example:
+
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>image_editor_output_format</h1>
+                    <h2>Tworzy AVIF z pliku JPG</h2>
+                    <pre>
+                        <code>add_filter(
+    'image_editor_output_format',
+    function ( $formats ) {
+        $formats['image/jpeg'] = 'image/avif';
+        return $formats;
+    }
+);</code></pre>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>shortcodes</h1>
+                    <ul>
+                        <li>shortcode_parse_atts</li>
                         <li></li>
                         <li></li>
                     </ul>
                 </div>
-                <div class="handout"></div>
+                <div class="handout">
+                    Funkcja shortcode_parse_atts() - zawsze zwraca tablicę, tak żeby nie trzeba było testować.
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>Interactivity API in 6.5</h1>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    https://make.wordpress.org/core/2024/03/04/interactivity-api-dev-note/
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>The Block Bindings API</h1>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>I18N Improvements</h1>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    I18N Improvements in 6.5 (Performant Translations)
+                    https://make.wordpress.org/core/2024/02/27/i18n-improvements-6-5-performant-translations/
+                </div>
             </div>
 
             <div class="slide">
@@ -96,7 +192,8 @@
                         <li></li>
                     </ul>
                 </div>
-                <div class="handout"></div>
+                <div class="handout">
+                </div>
             </div>
 
             <div class="slide">
