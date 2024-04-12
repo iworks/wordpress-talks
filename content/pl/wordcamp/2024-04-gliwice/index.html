@@ -97,10 +97,11 @@
                     <h1>zależności wtyczki</h1>
                     <ul>
                         <li>Requires Plugins</li>
-                        <li>wp_plugin_dependencies_slug</li>
-                        <li>instalowanie</li>
-                        <li>WP_Plugin_Dependencies</li>
                     </ul>
+                    <pre><code>/**
+ * Plugin Name: Płatności dla Sklepu przez Wrota Czasu
+ * Requires Plugins: sklep, wrota-czasu
+ */</code></pre>
                 </div>
                 <div class="handout">
                     Introducing Plugin Dependencies in WordPress 6.5
@@ -111,20 +112,10 @@
             <div class="slide">
                 <div class="slidecontent">
                     <h1>zależności wtyczki</h1>
-                    <pre>
-                        <code>/**
- * Plugin Name: Express Payment Gateway Checkout for Shop
- * Requires Plugins: shop, payment-gateway
- */</code></pre>
-                </div>
-            </div>
-
-            <div class="slide">
-                <div class="slidecontent">
-                    <h1>zależności wtyczki</h1>
                     <ul>
-                        <li>wyłączanie wtyczki nadrzędnej</li>
-                        <li>usuwanie wtyczki nadrzędnej</li>
+                        <li>instalowanie wtyczek</li>
+                        <li>wyłączanie wtyczek</li>
+                        <li>usuwanie wtyczek</li>
                         <li>ręczne skasowanie</li>
                         <li>aktualizacja zależności</li>
                     </ul>
@@ -140,8 +131,26 @@
                         <li>zależności cykliczne</li>
                         <li>ogranicznie</li>
                         <li>mu-plugins</li>
+                        <li>WP CLI</li>
                         <li>motywy</li>
                     </ul>
+                </div>
+                <div class="handout">
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>zależności wtyczki</h1>
+                    <pre><code>add_filter(
+    'wp_plugin_dependencies_slug',
+    function ( $slug ) {
+        if ( 'my-plugin' === $slug ) {
+            $slug = 'my-plugin-pro';
+        }
+        return $slug;
+    }
+);</code></pre>
                 </div>
                 <div class="handout">
                 </div>
@@ -167,6 +176,8 @@ Yes. Developers can use the image_editor_output_format filter to specify this ty
 
                 </div>
             </div>
+
+
             <div class="slide">
                 <div class="slidecontent">
                     <h1>image_editor_output_format</h1>
@@ -184,66 +195,10 @@ Yes. Developers can use the image_editor_output_format filter to specify this ty
 
             <div class="slide">
                 <div class="slidecontent">
-                    <h1>shortcodes</h1>
-                    <ul>
-                        <li>shortcode_parse_atts</li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="handout">
-                    Funkcja shortcode_parse_atts() - zawsze zwraca tablicę, tak żeby nie trzeba było testować.
-                </div>
-            </div>
-
-            <div class="slide">
-                <div class="slidecontent">
-                    <h1>Interactivity API in 6.5</h1>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="handout">
-                    https://make.wordpress.org/core/2024/03/04/interactivity-api-dev-note/
-                </div>
-            </div>
-
-            <div class="slide">
-                <div class="slidecontent">
-                    <h1>The Block Bindings API</h1>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="handout">
-                </div>
-            </div>
-
-            <div class="slide">
-                <div class="slidecontent">
-                    <h1>I18N Improvements</h1>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="handout">
-                    I18N Improvements in 6.5 (Performant Translations)
-                    https://make.wordpress.org/core/2024/02/27/i18n-improvements-6-5-performant-translations/
-                </div>
-            </div>
-
-            <div class="slide">
-                <div class="slidecontent">
                     <h1>Biblioteka krojow pisma</h1>
                     <ul>
-                        <li>wp_register_font_collection</li>
-                        <li>wp_get_font_dir</li>
+                        <li>wp_register_font_collection()</li>
+                        <li>wp_get_font_dir()</li>
                         <li>font_dir</li>
                     </ul>
                 </div>
@@ -255,14 +210,34 @@ Yes. Developers can use the image_editor_output_format filter to specify this ty
 
             <div class="slide">
                 <div class="slidecontent">
-                    <h1></h1>
+                    <h1>I18N Improvements</h1>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>znaczące skrtócenie czasu ładowania</li>
+                        <li>lepsza obsługa wielu języków naraz</li>
+                        <li>nowy format .l10n.php</li>
+                        <li>translation_file_format</li>
+                        <li>WP CLI (2.10.0)</li>
                     </ul>
                 </div>
                 <div class="handout">
+                    I18N Improvements in 6.5 (Performant Translations)
+                    https://make.wordpress.org/core/2024/02/27/i18n-improvements-6-5-performant-translations/
+                    https://core.trac.wordpress.org/ticket/59656
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slidecontent">
+                    <h1>różne</h1>
+                    <ul>
+                        <li>shortcode_parse_atts</li>
+                        <li>Interactivity API</li>
+                        <li>The Block Bindings API</li>
+                    </ul>
+                </div>
+                <div class="handout">
+                    Funkcja shortcode_parse_atts() - zawsze zwraca tablicę, tak żeby nie trzeba było testować.
+                    https://make.wordpress.org/core/2024/03/04/interactivity-api-dev-note/
                 </div>
             </div>
 
