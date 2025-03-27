@@ -1,0 +1,298 @@
+:root {
+	/* COLORS */
+	--color-white: #fff;
+
+	--color-accent: rgba(0, 79, 169, 1);
+	--color-border: var(--color-accent);
+
+	--color-theme-1: rgba(8, 168, 0, 0.7);
+	--color-theme-2: rgba(0, 79, 169, 0.9);
+}
+
+@mixin bg() {
+	background: {
+		image: linear-gradient(124deg, var(--color-theme-1) 24%, var(--color-theme-2) 70%);
+	}
+}
+
+@media screen {
+	body {
+		background: {
+			image: none;
+		}
+		font: {
+			family: 'Lato', sans-serif;
+		}
+	}
+
+	div#header
+	,div#footer
+	,.slide h1
+	,#controls #navLinks a
+	{
+		background-color: #4f504f;
+	}
+
+	div {
+		&#header {
+			background: {
+				color: var(--color-white);
+				image: url(images/hero.jpg);
+				repeat: no-repeat;
+				position: 0 100%;
+				size: cover;
+			}
+			height: 5em;
+			border-bottom: 5px solid var(--color-border);
+			position: relative;
+
+			&:before {
+				@include bg;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				content: "";
+				z-index: -1;
+			}
+		}
+
+		&:after {
+			content: "";
+			background: transparent url(images/logo.svg) no-repeat 30px 50%;
+			background-size: 32vh;
+			right: 0;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			position: absolute;
+			z-index: -1;
+		}
+	}
+
+	.controls {
+		color: #fff;
+	}
+
+	div#footer,
+	div#currentSlide {
+		color: #000;
+	}
+
+	div#footer {
+		border-top: 4px solid #006f98;
+		color: #bbb;
+	}
+
+	div#footer::after {
+		content: "";
+		background: url(images/hero-large.jpg);
+		background-position: bottom;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: -1;
+		opacity: .5;
+	}
+	div#footer h1,
+	div#footer h2 {
+		opacity: .8;
+	}
+
+	.main-page {
+		&.slide {
+			h1 {
+				border: 0;
+			}
+
+			h4 {
+				background: transparent url(../../../companies/opi-pbi/opi-pbi.svg) no-repeat;
+				width: 300px;
+				height: 80px;
+				text-indent: -999em;
+				overflow: hidden;
+				background-size: contain;
+			}
+		}
+	}
+
+	.slide h1
+	{
+		text-transform: none;
+		padding: .5em;
+		border: 1px solid #006f98;
+		background-color: #fff;
+		right: 100px;
+		left: auto;
+		color: #145;
+	}
+
+	.slide
+	,#slide0
+	{
+		padding-top: 5.5em;
+	}
+
+	.slide.license ul
+	{
+		font-size: .5em;
+	}
+
+	img.alignright {
+		float: right;
+	}
+
+	#currentSlide {
+
+	}
+
+
+
+	ul.rw {
+		width: 88%;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		list-style: none;
+		padding: 0;
+		text-align: center;
+	}
+
+	ul.rw.nowrap {
+		flex-wrap: nowrap;
+	}
+
+	ul.rw li {
+		width: 50%;
+	}
+	ul.rw li img {
+		display: block;
+		margin: 10px auto;
+		max-width: 90%;
+	}
+	ul.rw.fit li img {
+		width: 100%;
+		border: 10px solid white;
+	}
+
+	.fitimage img {
+		display: block;
+		margin: auto;
+		max-height: 100%;
+	}
+
+	.img300 img {
+		width: 300px;
+	}
+
+	.questions h2 {
+		font-size: 3em;
+		text-align: center;
+		margin-top: 1em;
+	}
+
+	div#header {
+		height: 25vh;
+	}
+	div#footer {
+		height: 7vh;
+	}
+	.presentation .slide small {
+		opacity: .6;
+	}
+	/**
+	 * sizes
+	 */
+	.presentation .slide {
+		padding-top: 27vh;
+	}
+	.fit {
+		height: 60vh;
+	}
+	.fit img {
+		height: 100%;
+	}
+	.flex {
+		display: flex;
+		justify-content: center;
+	}
+	.flex img {
+		margin: 0 10px;
+	}
+
+	.lh-gauge {
+		stroke-linecap: round;
+		width: var(--gauge-circle-size);
+		height: var(--gauge-circle-size);
+	}
+
+	.small {
+		height: 15vh;
+	}
+	.float-right {
+		float: right;
+	}
+	.small img {
+		height: 15vh;
+		width: 15vh;
+	}
+
+	/**
+	 * table
+	 */
+	table {
+		border-collapse: collapse;
+		margin: 0 auto;
+	}
+	td.aligncenter {
+		text-align: center;
+	}
+	td {
+		border: 1px solid #ddd;
+		padding: 10px;
+	}
+	tr:nth-child(even) {
+		background: #eee;
+	}
+	/**
+	 * google
+	 */
+	.score {
+		float: right;
+		text-align: center;
+	}
+	.lh-scorescale {
+		display: inline-flex;
+		font: 16px/1 monospace;
+		border: 1px solid #e0e0e0;
+		padding: 8px;
+		border-radius: 20px;
+		margin: 0 auto;
+	}
+	.lh-scorescale-range {
+		display: flex;
+		align-items: center;
+		margin: 0 12px;
+		white-space: nowrap;
+	}
+	.lh-scorescale-range::before {
+		content: '';
+		width: 18px;
+		height: 6px;
+		border-radius: 10px;
+		display: block;
+		margin-right: 10px;
+	}
+	.lh-scorescale-range--fail:before {
+		background-color: #ff4e42;;
+	}
+	.lh-scorescale-range--average:before {
+		background-color: #ffa400;
+	}
+	.lh-scorescale-range--pass:before {
+		background-color: #0cce6b;
+	}
+}
