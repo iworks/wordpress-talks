@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-sass --watch style.scss:style.css --style=compact --sourcemap=none
+sass --watch styles.scss:styles.css --style=compact --sourcemap=none
