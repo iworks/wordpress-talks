@@ -95,10 +95,6 @@
         background-repeat: no-repeat;
     }
 
-    .logo-opi {
-        background-image: url(../../../companies/opi-pbi/opi-pbi.svg);
-    }
-
     .logo-iworks {
         background-image: url(../../../companies/iworks/iworks.svg);
     }
@@ -145,12 +141,6 @@
     img.alignright {
         float: right;
     }
-
-    #currentSlide {
-
-    }
-
-
 
     ul.rw {
         width: 88%;
